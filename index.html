@@ -1,0 +1,1541 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Landscaping Co. — Landscape Design, Hardscaping &amp; Maintenance</title>
+<meta name="description" content="Landscaping Co. — professional landscape design, hardscaping, and maintenance for residential and commercial properties. Free estimates.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237a9b7f'/%3E%3Cpath d='M15 24A7 7 0 0 1 13.8 10.1C19.5 9 21 8.48 23 6c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z' fill='none' stroke='%23fff' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --sage:#7a9b7f;
+    --sage-dark:#556b5a;
+    --bg:#ffffff;
+    --text:#2c2c2c;
+    --muted:#5f6b60;
+    --line:#e8ede9;
+    --tint:#f4f7f4;
+    --radius:14px;
+    --shadow-sm:0 1px 2px rgba(44,44,44,.05), 0 10px 26px rgba(44,44,44,.06);
+    --shadow-md:0 2px 6px rgba(44,44,44,.06), 0 26px 50px -14px rgba(44,44,44,.18);
+    --ease:ease-in-out;
+    --container:1180px;
+    --header-h:72px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  h1,h2,h3,h4{margin:0;line-height:1.18;font-weight:700;letter-spacing:-.02em;color:var(--text);}
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font:inherit;}
+  [hidden]{display:none!important;}
+  [id]{scroll-margin-top:calc(var(--header-h) + 16px);}
+
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
+    outline:2px solid var(--sage-dark);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .container{
+    max-width:var(--container);
+    margin-inline:auto;
+    padding-inline:clamp(20px,5vw,40px);
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+    padding:.85em 1.6em;
+    border:2px solid transparent;border-radius:999px;
+    font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;
+    cursor:pointer;
+    transition:background .25s var(--ease),color .25s,border-color .25s,box-shadow .25s,transform .25s;
+  }
+  .btn-primary{background:var(--sage-dark);color:#fff;}
+  .btn-primary:hover{background:#42574a;box-shadow:0 12px 26px -10px rgba(85,107,90,.7);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--sage);color:var(--sage-dark);}
+  .btn-block{width:100%;}
+  .btn:disabled{opacity:.7;cursor:default;transform:none;box-shadow:none;}
+  @media (prefers-reduced-motion:reduce){ .btn:hover{transform:none;} }
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid transparent;
+    transition:box-shadow .3s var(--ease),border-color .3s,background .3s;
+  }
+  .site-header.is-scrolled{
+    background:rgba(255,255,255,.96);
+    border-color:var(--line);
+    box-shadow:0 6px 24px rgba(44,44,44,.08);
+  }
+  .header-inner{
+    display:flex;align-items:center;gap:24px;
+    min-height:var(--header-h);
+  }
+  .logo{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:800;font-size:1.1rem;letter-spacing:-.02em;color:var(--sage-dark);
+    flex-shrink:0;
+  }
+  .logo-mark{
+    width:30px;height:30px;display:grid;place-items:center;
+    background:var(--sage);color:#fff;border-radius:9px;
+  }
+  .logo-mark svg{width:18px;height:18px;}
+  .nav{margin-left:auto;}
+  .nav-list{display:flex;gap:28px;}
+  .nav-list a{
+    position:relative;display:inline-block;
+    font-weight:600;font-size:.95rem;color:var(--text);padding:.4em 0;
+  }
+  .nav-list a::after{
+    content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;
+    background:var(--sage);transition:right .3s var(--ease);
+  }
+  .nav-list a:hover::after,.nav-list a.is-active::after{right:0;}
+  .btn-book{flex-shrink:0;}
+  .nav-toggle{
+    display:none;
+    width:44px;height:44px;align-items:center;justify-content:center;
+    background:none;border:1px solid var(--line);border-radius:10px;color:var(--text);cursor:pointer;
+  }
+  .nav-toggle svg{width:22px;height:22px;}
+
+  @media (max-width:880px){
+    .header-inner{gap:12px;}
+    .logo{font-size:1rem;min-width:0;}
+    .nav{margin-left:auto;}
+    .nav-toggle{display:inline-flex;}
+    .nav-list{
+      position:absolute;left:0;right:0;top:100%;
+      flex-direction:column;gap:0;
+      background:#fff;border-bottom:1px solid var(--line);
+      box-shadow:0 20px 40px -12px rgba(44,44,44,.16);
+      padding:6px 0;
+      transform:translateY(-8px);opacity:0;pointer-events:none;
+      transition:transform .3s var(--ease),opacity .3s var(--ease);
+    }
+    .nav-list.is-open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    .nav-list a{padding:14px clamp(20px,5vw,40px);font-size:1rem;}
+    .nav-list a::after{display:none;}
+    .btn-book{padding:.66em .95em;font-size:.72rem;letter-spacing:.04em;}
+  }
+  @media (max-width:420px){
+    .header-inner{gap:8px;}
+    .logo{font-size:.9rem;gap:8px;}
+    .logo-mark{width:26px;height:26px;}
+    .btn-book{padding:.58em .8em;font-size:.66rem;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;isolation:isolate;overflow:hidden;}
+  .hero-bg{
+    position:absolute;inset:0;z-index:-2;
+    background:url("hero.png") center center / cover no-repeat scroll;
+  }
+  .hero-scrim{
+    position:absolute;inset:0;z-index:-1;
+    /* dark overlay keeps white hero text readable over any photo */
+    background:linear-gradient(to right,rgba(0,0,0,.55),rgba(0,0,0,.3));
+  }
+  .hero-inner{
+    display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,3.5rem);
+    padding-block:clamp(3rem,8vw,5.5rem);
+    align-items:center;
+  }
+  @media (min-width:960px){
+    .hero-inner{grid-template-columns:1.05fr minmax(380px,480px);}
+  }
+  @media (min-width:768px) and (max-width:959px){ .hero-form{max-width:450px;margin-inline:auto;} }
+  .hero-copy{color:#fff;max-width:560px;}
+  .hero-copy h1{
+    color:#fff;
+    font-size:clamp(2.15rem,5.4vw,3.4rem);
+    text-shadow:0 2px 16px rgba(0,0,0,.3);
+  }
+  .hero-sub{
+    font-size:clamp(1rem,1.7vw,1.18rem);
+    color:rgba(255,255,255,.94);
+    margin:1rem 0 1.6rem;
+    max-width:46ch;
+  }
+  .badges{display:flex;flex-wrap:wrap;gap:10px;}
+  .badges li{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.32);
+    backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+    color:#fff;padding:8px 14px;border-radius:999px;
+    font-size:.82rem;font-weight:600;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+    transition:box-shadow .3s ease;
+  }
+  .badges li:hover{box-shadow:0 6px 16px rgba(0,0,0,.2);}
+  @media (prefers-reduced-motion:reduce){ .badges li{transition:none;} }
+  .badges svg{width:16px;height:16px;flex-shrink:0;}
+
+  /* ---------- hero booking quiz (4 steps, inline) — SiteSync-style white card ---------- */
+  .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+  .hero-form{
+    background:#fff;
+    border-radius:12px;
+    border:2px solid #F97316;                         /* SiteSync accent-orange card edge */
+    padding:32px 28px;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+    display:flex;flex-direction:column;gap:16px;
+  }
+  @media (max-width:480px){ .hero-form{padding:24px 18px;} }
+  .hero-form h2{font-size:clamp(1.2rem,2.4vw,1.45rem);color:var(--text);text-align:center;}
+  .hero-form input,.hero-form select{
+    font:inherit;font-size:.95rem;font-weight:400;letter-spacing:0;text-transform:none;
+    width:100%;color:var(--text);background:#f0f4f8;
+    border:1px solid #e0e0e0;border-radius:8px;
+    padding:10px 12px;
+    transition:border-color .2s ease-out,box-shadow .2s ease-out,background .2s ease-out;
+  }
+  .hero-form input::placeholder{color:#9aa0a6;}
+  .hero-form :is(input,select):hover{border-color:#cbd5db;}
+  .hero-form :is(input,select):focus{
+    outline:none;border-color:#1e40af;background:#fff;
+    box-shadow:0 0 0 3px rgba(30,64,175,.15);
+  }
+  .hero-form input.has-error{border-color:#dc2626;}
+  .hero-form input.has-error:focus{border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.15);}
+  /* buttons inside this card copy SiteSync's proportions (boxier corners, taller
+     vertical padding, gentler press) rather than the site-wide pill/rugged values */
+  .hero-form .btn{border-radius:9px;padding:14px 1.4em;}
+  .hero-form .btn:active{transform:scale(.98);}
+
+  .quiz-intro{display:flex;flex-direction:column;gap:14px;}
+  .quiz-intro-sub{color:var(--muted);font-size:.92rem;}
+
+  /* GET STARTED expansion — form unfolds over 700ms. On desktop, .hero-inner's grid
+     (align-items:center, hero-copy taller than the collapsed card) naturally pulls the
+     WHOLE card upward in lock-step as .quiz grows, so the card genuinely grows up AND
+     down from its center — real layout movement, not a transform, so it never overshoots
+     or snaps back. (A scaleY/transform-origin:center version was tried first, but since
+     it animates on top of the max-height reveal it produces a transient bulge that un-does
+     itself by the time the transition ends — i.e. exactly the "jank" this request wants to
+     avoid — so it was dropped in favor of this cleaner, artifact-free result.) */
+  .quiz{
+    display:flex;flex-direction:column;gap:16px;
+    max-height:0;opacity:0;overflow:hidden;pointer-events:none;
+    transition:max-height 700ms ease-out,opacity 700ms ease-out;
+  }
+  .quiz.is-open{max-height:400px;opacity:1;pointer-events:auto;}     /* ≈ step-1 height, so the unfold uses the full 700ms */
+  .quiz.is-expanded{max-height:none;overflow:visible;transition:opacity 200ms ease-out;}  /* release the cap once open, so taller steps never clip */
+
+  .quiz-progress-wrap{display:flex;flex-direction:column;gap:6px;}
+  .quiz-steplabel{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+  .quiz-progress{height:6px;border-radius:999px;background:var(--line);overflow:hidden;}
+  .quiz-progress-fill{
+    display:block;height:100%;width:25%;
+    background:#1e40af;border-radius:999px;                /* SiteSync primary blue */
+    transition:width 400ms ease-out;
+  }
+
+  .quiz-body{position:relative;overflow:hidden;transition:height 350ms var(--ease);}
+  .quiz-step{
+    position:absolute;top:0;left:0;width:100%;
+    display:flex;flex-direction:column;gap:0;
+    opacity:0;transform:translateY(-20px);
+    transition:opacity 250ms ease-out,transform 250ms ease-out;
+    pointer-events:none;
+  }
+  .quiz-step.is-active{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .quiz-step[hidden]{display:none;}
+
+  .quiz-field{display:flex;flex-direction:column;gap:8px;}
+  .quiz-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
+  .quiz-q{font-weight:700;font-size:1rem;color:var(--text);margin:0 0 16px;}
+
+  /* SMS consent — step 1. Native checkbox stays for real focus/keyboard/AT
+     behaviour but is visually replaced by a box + SVG check that scales in,
+     via the sibling selectors below. */
+  .quiz-consent{position:relative;display:flex;align-items:flex-start;gap:10px;margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.45;cursor:pointer;}
+  .quiz-consent-input{position:absolute;top:1px;left:0;width:22px;height:22px;margin:0;opacity:0;cursor:pointer;}
+  .quiz-consent-box{
+    flex-shrink:0;width:22px;height:22px;margin-top:1px;
+    border:1.5px solid #cbd5d1;border-radius:5px;background:#fff;
+    display:grid;place-items:center;
+    transition:background 200ms ease-out,border-color 200ms ease-out;
+  }
+  .quiz-consent-check{width:14px;height:14px;color:#fff;opacity:0;transform:scale(.8);transition:opacity 200ms ease-out,transform 200ms ease-out;}
+  .quiz-consent-input:checked ~ .quiz-consent-box{background:var(--sage-dark);border-color:var(--sage-dark);}
+  .quiz-consent-input:checked ~ .quiz-consent-box .quiz-consent-check{opacity:1;transform:scale(1);}
+  .quiz-consent-input:focus-visible ~ .quiz-consent-box{outline:2px solid var(--sage-dark);outline-offset:2px;}
+  .quiz-consent-note{margin:6px 0 0;font-size:12px;line-height:1.4;color:#9aa0a6;}
+
+  /* icon/button selection grid — project type (step 2) & project scope (step 3) */
+  .quiz-options{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  .quiz-options--3 .quiz-option:last-child{grid-column:1/-1;flex-direction:row;justify-content:center;}  /* odd one out spans full width */
+  .quiz-options--3 .quiz-option:last-child .quiz-option-icon{width:28px;height:28px;}
+  @media (max-width:520px){ .quiz-options{grid-template-columns:1fr;} .quiz-options--3 .quiz-option:last-child{flex-direction:column;} .quiz-options--3 .quiz-option:last-child .quiz-option-icon{width:40px;height:40px;} }
+  .quiz-option{
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    min-height:44px;padding:14px 10px;
+    border:1.5px solid #dbe4dc;border-radius:10px;
+    background:#f4f6f4;
+    font:inherit;font-size:.85rem;font-weight:600;line-height:1.25;color:var(--text);text-align:center;
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+    transition:background 300ms ease-out,border-color 300ms ease-out,color 300ms ease-out,transform 300ms ease-out,box-shadow 300ms ease-out,opacity 300ms ease-out;
+  }
+  .quiz-option:hover{transform:scale(1.05);box-shadow:0 10px 22px -10px rgba(44,44,44,.35);border-color:#b9ccbb;}
+  @media (prefers-reduced-motion:reduce){ .quiz-option{transition:none;} .quiz-option:hover{transform:none;} }
+  .quiz-option-icon{width:40px;height:40px;color:var(--sage-dark);transition:color 300ms ease-out;}
+  .quiz-option-sub{display:block;font-size:.72rem;font-weight:400;color:#5f6b60;transition:color 300ms ease-out;}
+  .quiz-option-check{
+    position:absolute;top:6px;right:6px;width:18px;height:18px;border-radius:50%;
+    background:#fff;color:var(--sage-dark);display:grid;place-items:center;
+    opacity:0;transform:scale(.8);
+    transition:opacity 200ms ease-out,transform 200ms ease-out;
+  }
+  .quiz-option-check svg{width:11px;height:11px;}
+  .quiz-option.is-selected{background:var(--sage-dark);border-color:#42574a;color:#fff;}
+  .quiz-option.is-selected .quiz-option-icon{color:#fff;}
+  .quiz-option.is-selected .quiz-option-sub{color:rgba(255,255,255,.85);}
+  .quiz-option.is-selected .quiz-option-check{opacity:1;transform:scale(1);}
+  /* once a choice is made, mute the rest — full opacity returns on hover so re-picking stays easy */
+  .quiz-options.has-selection .quiz-option:not(.is-selected){opacity:.6;}
+  .quiz-options.has-selection .quiz-option:not(.is-selected):hover{opacity:1;}
+
+  .quiz-err{margin:4px 0 0;min-height:14px;font-size:12px;line-height:1.2;font-weight:600;color:#dc2626;opacity:0;transition:opacity 200ms ease-out;}
+  .quiz-err:not(:empty){opacity:1;margin-bottom:12px;}
+
+  .quiz-nav{display:flex;align-items:center;gap:12px;margin-top:16px;}
+  .quiz-next{flex:1;}
+  .quiz-next.is-locked{opacity:.6;box-shadow:none;cursor:not-allowed;}
+  .quiz-next.is-locked:hover{transform:none;background:var(--sage-dark);}
+  .quiz-back{
+    background:none;border:0;cursor:pointer;
+    font:inherit;font-size:.85rem;font-weight:700;color:var(--sage-dark);padding:.4em .2em;
+  }
+  .quiz-back:hover{color:#42574a;text-decoration:underline;}
+  .quiz-done{
+    margin:0;font-size:.85rem;color:var(--sage-dark);
+    background:var(--tint);border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .quiz,.quiz.is-open,.quiz.is-expanded{transition:none;}
+    .quiz-body,.quiz-step,.quiz-progress-fill{transition-duration:1ms;}
+  }
+
+  /* ---------- generic section ---------- */
+  .section{padding-block:clamp(3.5rem,8vw,6rem);}
+  .section--tint{background:var(--tint);}
+  .section-head{max-width:640px;margin:0 auto clamp(2rem,5vw,3.25rem);text-align:center;}
+  .eyebrow{
+    font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+    color:var(--sage);margin-bottom:.6rem;
+  }
+  .section-head h2{font-size:clamp(1.9rem,4.2vw,2.75rem);}
+  .section-sub{margin-top:.9rem;color:var(--muted);font-size:clamp(1rem,1.5vw,1.08rem);}
+
+  /* ---------- video section (placeholder) ----------
+     Swap-ready: to go live, replace the .video-placeholder <div> with a
+     YouTube/Vimeo <iframe> or a self-hosted <video> — both are styled
+     below to fill the same 16:9 rounded frame. */
+  .video-section{padding-block:clamp(2rem,5vw,2.75rem);background:var(--bg);}
+  .video-container{max-width:900px;margin:0 auto;padding-inline:clamp(20px,5vw,40px);}
+  .video-container .section-head{margin-bottom:clamp(1rem,3vw,1.5rem);}
+  .video-container .section-head h2{font-size:clamp(1.6rem,3.4vw,2.1rem);}
+  .video-placeholder{
+    aspect-ratio:16/9;
+    background:var(--tint);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.85rem;
+    color:var(--muted);text-align:center;
+  }
+  .video-placeholder .play{
+    width:clamp(56px,9vw,76px);height:clamp(56px,9vw,76px);
+    display:grid;place-items:center;
+    background:var(--sage);color:#fff;border-radius:50%;
+    box-shadow:0 10px 26px -10px rgba(85,107,90,.6);
+  }
+  .video-placeholder .play svg{width:42%;height:42%;transform:translateX(6%);}
+  .video-placeholder p{font-weight:600;letter-spacing:.02em;}
+  .video-container iframe,.video-container video{
+    display:block;width:100%;aspect-ratio:16/9;
+    border:0;border-radius:var(--radius);background:#000;
+  }
+  .video-container video{object-fit:cover;}
+
+  /* ---------- services & testimonials grid ---------- */
+  .cards-3{display:grid;grid-template-columns:1fr;gap:clamp(1rem,3vw,1.75rem);}
+  @media (min-width:640px){ .cards-3{grid-template-columns:repeat(2,1fr);} }
+  @media (min-width:1024px){ .cards-3{grid-template-columns:repeat(3,1fr);} }
+
+  .service-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(1.5rem,3vw,2rem);box-shadow:var(--shadow-sm);
+    transition:transform .3s var(--ease),box-shadow .3s;
+  }
+  .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+  @media (prefers-reduced-motion:reduce){ .service-card:hover{transform:none;} }
+  .service-icon{
+    width:56px;height:56px;display:grid;place-items:center;
+    background:var(--tint);color:var(--sage-dark);border-radius:14px;margin-bottom:1rem;
+  }
+  .service-icon svg{width:28px;height:28px;}
+  .service-card h3{font-size:1.2rem;margin-bottom:.5rem;}
+  .service-card p{color:var(--muted);}
+
+  /* ---------- portfolio ---------- */
+  .portfolio-grid{display:grid;grid-template-columns:1fr;gap:clamp(1rem,3vw,1.5rem);}
+  @media (min-width:720px){ .portfolio-grid{grid-template-columns:repeat(2,1fr);} }
+  .project{
+    position:relative;display:block;overflow:hidden;
+    border-radius:var(--radius);box-shadow:var(--shadow-sm);
+    aspect-ratio:4/3;
+  }
+  .project-media{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    transition:transform .5s var(--ease);
+  }
+  .project:hover .project-media{transform:scale(1.05);}
+  @media (prefers-reduced-motion:reduce){ .project:hover .project-media{transform:none;} }
+  .project--a .project-media{background-color:#6f9573;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='xMidYMid slice'%3E%3Crect width='400' height='300' fill='%2386a98a'/%3E%3Ccircle cx='330' cy='58' r='30' fill='%23f4ead0' opacity='.75'/%3E%3Cpath d='M0 120h400v42H0z' fill='%23759777'/%3E%3Cpath d='M0 186h400v54H0z' fill='%2361805f'/%3E%3Cpath d='M0 248h400v60H0z' fill='%234f6a50'/%3E%3C/svg%3E");}
+  .project--b .project-media{background-color:#a99271;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='xMidYMid slice'%3E%3Crect width='400' height='300' fill='%23bcac8b'/%3E%3Crect width='400' height='70' fill='%237fa383'/%3E%3Cg stroke='%238d7d5f' stroke-width='3' fill='none'%3E%3Cpath d='M0 110h400M0 160h400M0 210h400M0 260h400M60 80v220M150 80v220M250 80v220M340 80v220'/%3E%3C/g%3E%3C/svg%3E");}
+  .project--c .project-media{background-color:#7fa383;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='xMidYMid slice'%3E%3Crect width='400' height='300' fill='%23aecdaa'/%3E%3Crect y='140' width='400' height='160' fill='%238bb18d'/%3E%3Crect y='220' width='400' height='80' fill='%23c9b48f'/%3E%3Cg fill='%235e7d5c'%3E%3Ccircle cx='80' cy='150' r='26'/%3E%3Ccircle cx='150' cy='158' r='20'/%3E%3Ccircle cx='300' cy='150' r='30'/%3E%3C/g%3E%3C/svg%3E");}
+  .project--d .project-media{background-color:#4f7365;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='xMidYMid slice'%3E%3Crect width='400' height='300' fill='%235c8272'/%3E%3Cpath d='M0 170h400v130H0z' fill='%233f5f52'/%3E%3Cellipse cx='210' cy='250' rx='150' ry='34' fill='%236fa7bd' opacity='.55'/%3E%3Cg fill='%2333493f'%3E%3Cellipse cx='90' cy='150' rx='34' ry='46'/%3E%3Crect x='83' y='176' width='13' height='40'/%3E%3C/g%3E%3C/svg%3E");}
+  .project-overlay{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;justify-content:flex-end;gap:4px;
+    padding:clamp(1rem,3vw,1.4rem);color:#fff;
+    background:linear-gradient(to top,rgba(20,28,22,.85) 0%,rgba(20,28,22,.2) 52%,transparent 100%);
+  }
+  .project-name{font-weight:700;font-size:1.12rem;}
+  .project-cta{
+    font-size:.82rem;font-weight:600;letter-spacing:.04em;
+    opacity:.85;transform:translateY(3px);
+    transition:opacity .3s var(--ease),transform .3s var(--ease);
+  }
+  .project:hover .project-cta,.project:focus-visible .project-cta{opacity:1;transform:translateY(0);}
+
+  /* ---------- testimonials ---------- */
+  .quote-card{
+    margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(1.5rem,3vw,2rem);box-shadow:var(--shadow-sm);
+    display:flex;flex-direction:column;gap:.9rem;
+  }
+  .stars{color:#e0a83b;letter-spacing:3px;font-size:1rem;}
+  .quote-card blockquote{margin:0;font-size:1.02rem;color:var(--text);}
+  .quote-card figcaption{font-weight:700;color:var(--sage-dark);font-size:.92rem;}
+
+  /* ---------- faq ---------- */
+  .faq-container{max-width:820px;}
+  .faq{display:flex;flex-direction:column;gap:12px;}
+  .faq-item{
+    background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;
+    transition:border-color .25s var(--ease);
+  }
+  .faq-item.is-open{border-color:#cdd9cf;}
+  .faq-q{
+    width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;
+    background:none;border:0;cursor:pointer;text-align:left;
+    font-weight:700;font-size:clamp(1rem,1.6vw,1.1rem);color:var(--text);
+    padding:clamp(1rem,2.6vw,1.35rem) clamp(1rem,3vw,1.5rem);
+    transition:color .2s;
+  }
+  .faq-q:hover{color:var(--sage-dark);}
+  .faq-q:focus-visible{outline:2px solid var(--sage);outline-offset:-3px;border-radius:12px;}
+  .faq-chevron{width:20px;height:20px;flex-shrink:0;color:var(--sage);transition:transform .3s var(--ease);}
+  .faq-item.is-open .faq-chevron{transform:rotate(180deg);}
+  .faq-a{display:grid;grid-template-rows:1fr;transition:grid-template-rows .3s var(--ease);}
+  .faq.is-enhanced .faq-a{grid-template-rows:0fr;}
+  .faq.is-enhanced .faq-item.is-open .faq-a{grid-template-rows:1fr;}
+  .faq-a-inner{overflow:hidden;}
+  .faq-a p{
+    margin:0;color:var(--muted);max-width:66ch;
+    padding:0 clamp(1rem,3vw,1.5rem) clamp(1.1rem,2.6vw,1.35rem);
+  }
+  @media (prefers-reduced-motion:reduce){ .faq-a,.faq-chevron{transition:none;} }
+
+  /* ---------- footer ---------- */
+  .site-footer{background:var(--sage-dark);color:rgba(255,255,255,.85);}
+  .footer-grid{
+    display:grid;grid-template-columns:1fr;gap:clamp(1.75rem,4vw,2.5rem);
+    padding:clamp(3rem,7vw,4.5rem) 0 clamp(1.5rem,4vw,2rem);
+  }
+  @media (min-width:720px){ .footer-grid{grid-template-columns:1.6fr 1fr 1.2fr .9fr;} }
+  .footer-brand .logo{color:#fff;margin-bottom:.75rem;}
+  .footer-brand p{max-width:34ch;font-size:.92rem;}
+  .footer-col h4{color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem;}
+  .footer-col ul{display:flex;flex-direction:column;gap:.6rem;font-size:.92rem;}
+  .footer-col a:hover{color:#fff;text-decoration:underline;}
+  .social{display:flex;gap:12px;}
+  .social a{
+    width:38px;height:38px;display:grid;place-items:center;
+    border:1px solid rgba(255,255,255,.28);border-radius:10px;color:#fff;
+    transition:background .2s,border-color .2s;
+  }
+  .social a:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.55);}
+  .social svg{width:18px;height:18px;}
+  .footer-bottom{
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+    padding:1.25rem 0 2rem;border-top:1px solid rgba(255,255,255,.16);
+    font-size:.82rem;color:rgba(255,255,255,.6);
+  }
+
+  .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+
+  /* ---------- LuminaSales chat side panel ---------- */
+  .chat-button{
+    position:fixed;bottom:20px;right:20px;
+    width:60px;height:60px;border-radius:50%;
+    background:var(--sage);border:0;color:#fff;cursor:pointer;
+    box-shadow:0 4px 12px rgba(122,155,127,.3);
+    display:flex;align-items:center;justify-content:center;
+    z-index:9998;
+    transition:background 300ms ease-out,box-shadow 300ms ease-out,transform 300ms ease-out;
+    animation:chatPulse 3s ease-in-out infinite;
+  }
+  .chat-button:hover{
+    background:var(--sage-dark);
+    box-shadow:0 6px 16px rgba(122,155,127,.4);
+    transform:scale(1.1);
+    animation:none;
+  }
+  .chat-button:active{transform:scale(.95);}
+  .chat-button:focus-visible{outline:2px solid var(--sage-dark);outline-offset:3px;animation:none;}
+  .chat-button svg{width:28px;height:28px;}
+  @keyframes chatPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.08);}}
+  @media (prefers-reduced-motion:reduce){
+    .chat-button{animation:none;transition:none;}
+    .chat-button:hover,.chat-button:active{transform:none;}
+  }
+
+  .chat-panel{
+    position:fixed;right:0;top:0;
+    width:400px;height:100vh;
+    background:#fff;
+    box-shadow:-4px 0 16px rgba(0,0,0,.1);
+    z-index:9999;
+    transform:translateX(100%);
+    transition:transform 400ms ease-in;    /* close */
+    display:flex;flex-direction:column;
+    overflow:visible;
+  }
+  .chat-panel.open{
+    transform:translateX(0);
+    transition:transform 500ms ease-out;   /* open */
+  }
+  .chat-panel-header{
+    padding:16px;border-bottom:1px solid #e0e0e0;
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;flex-shrink:0;
+  }
+  .chat-panel-header h3{margin:0;font-size:16px;font-weight:600;color:var(--text);}
+  .chat-panel-close{
+    background:none;border:0;font-size:28px;line-height:1;cursor:pointer;
+    color:#999;padding:0;width:32px;height:32px;
+    display:flex;align-items:center;justify-content:center;
+    transition:color 300ms ease-out,transform 300ms ease-out;
+  }
+  .chat-panel-close:hover{color:var(--text);transform:scale(1.2);}
+  .chat-panel-close:active{transform:scale(.95);}
+  .chat-panel-content{flex:1;overflow:visible;overflow-y:auto;padding:0;background:#fff;}
+  [data-lumina-embed]{width:100%;height:100%;}
+
+  @media (max-width:768px){
+    .chat-panel{width:100%;}
+    .chat-button{width:56px;height:56px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .chat-panel,.chat-panel.open{transition:none;}
+    .chat-panel-close{transition:none;}
+    .chat-panel-close:hover,.chat-panel-close:active{transform:none;}
+  }
+
+  /* =====================================================================
+     MOTION LAYER — page-load entrances, scroll reveals, hover polish,
+     micro-interactions. Transform/opacity only. Entrance animations use
+     fill-mode:backwards (hidden during their delay, then free) so they
+     never lock hover transforms. Everything is neutralised in the
+     prefers-reduced-motion block at the end.
+     ===================================================================== */
+  @keyframes fx-drop  { from{opacity:0;transform:translateY(-48px);} to{opacity:1;transform:none;} }
+  @keyframes fx-rise  { from{opacity:0;transform:translateY(28px);} to{opacity:1;transform:none;} }
+  @keyframes fx-inLeft{ from{opacity:0;transform:translateX(40px);} to{opacity:1;transform:none;} }
+
+  /* ---- page-load entrances (direct, no flourish) ---- */
+  .site-header{animation:fx-drop .4s ease-out backwards;}
+  .hero-copy h1{animation:fx-rise .4s ease-out .15s backwards;}
+  .hero-sub{animation:fx-rise .4s ease-out .25s backwards;}
+  .badges li{animation:fx-rise .35s ease-out backwards;}
+  .badges li:nth-child(1){animation-delay:.3s;}
+  .badges li:nth-child(2){animation-delay:.38s;}
+  .badges li:nth-child(3){animation-delay:.46s;}
+  .hero-form{animation:fx-inLeft .4s ease-out .3s backwards;}
+  .nav-list li{animation:fx-rise .3s ease-out backwards;}
+  .nav-list li:nth-child(1){animation-delay:.12s;}
+  .nav-list li:nth-child(2){animation-delay:.2s;}
+  .nav-list li:nth-child(3){animation-delay:.28s;}
+  .nav-list li:nth-child(4){animation-delay:.36s;}
+  .nav-list li:nth-child(5){animation-delay:.44s;}
+  @media (max-width:880px){ .nav-list li{animation:none;} }
+
+  /* ---- scroll reveals (JS toggles .pre-reveal / .in): fade + slide, no softness ---- */
+  .section-head{transition:opacity .4s ease-in-out,transform .4s ease-in-out;}
+  #services .service-card{transition:opacity .4s ease-in-out,transform .25s ease-in-out,box-shadow .25s ease-in-out,background .25s ease-in-out,border-color .25s ease-in-out;}
+  #portfolio .project{transition:opacity .4s ease-in-out,transform .25s ease-in-out,box-shadow .25s ease-in-out;}
+  #testimonials .quote-card{transition:opacity .4s ease-in-out,transform .25s ease-in-out,box-shadow .25s ease-in-out;}
+  #faq .faq-item{transition:opacity .4s ease-in-out,transform .3s ease-in-out,border-color .2s ease-in-out;}
+  .video-placeholder{transition:opacity .4s ease-in-out,transform .3s ease-in-out,box-shadow .25s ease-in-out,border-color .25s ease-in-out;}
+  .pre-reveal{opacity:0;transform:translateY(20px);}
+
+  /* rating stars: shown, no decorative stagger */
+  .stars span{display:inline-block;}
+
+  /* ---- logo / nav hover ---- */
+  .logo{transition:transform .25s ease-in-out,filter .25s ease-in-out;}
+  .logo:hover{transform:scale(1.06);filter:drop-shadow(0 8px 10px rgba(44,44,44,.4));}
+  .nav-list a{transition:color .25s ease-in-out;}
+  .nav-list a:hover{color:var(--sage-dark);}
+
+  /* ---- hero trust badges: solid lift, no sway/rotation ---- */
+  .badges li{transition:box-shadow .25s ease-in-out,transform .25s ease-in-out,background .25s ease-in-out;}
+  .badges li:hover{transform:scale(1.1);background:rgba(85,107,90,.55);box-shadow:0 14px 26px rgba(0,0,0,.32);}
+  .badges li svg{transition:transform .25s ease-in-out;}
+  .badges li:hover svg{transform:scale(1.1);}
+
+  /* ---- service cards hover: simple lift + shadow darkens ---- */
+  #services .service-card:hover{transform:translateY(-8px);background:#fbfcfb;border-color:rgba(122,155,127,.5);box-shadow:0 30px 50px -18px rgba(44,44,44,.42);}
+  .service-icon{transition:transform .25s ease-in-out,color .25s ease-in-out,background .25s ease-in-out;}
+  .service-card:hover .service-icon{transform:scale(1.15);color:var(--sage-dark);background:#e3ebe4;}
+
+  /* ---- portfolio hover ---- */
+  .project-overlay{transition:background .25s ease-in-out;}
+  .project:hover .project-overlay{background:linear-gradient(to top,rgba(20,28,22,.92) 0%,rgba(20,28,22,.35) 55%,rgba(20,28,22,.08) 100%);}
+  .project:hover{box-shadow:0 26px 44px -16px rgba(44,44,44,.45);}
+  .project-name{transition:transform .25s ease-in-out;}
+  .project:hover .project-name{transform:translateY(-3px);}
+
+  /* ---- testimonials hover ---- */
+  #testimonials .quote-card:hover{transform:translateY(-6px);box-shadow:0 24px 40px -18px rgba(44,44,44,.38);}
+  .quote-card blockquote{transition:color .25s ease-in-out;}
+  #testimonials .quote-card:hover blockquote{color:var(--sage-dark);}
+
+  /* ---- faq question hover ---- */
+  .faq-q{transition:color .2s ease-in-out,background .2s ease-in-out;}
+  .faq-q:hover{background:var(--tint);}
+
+  /* ---- video placeholder hover: solid shadow, no glow ring ---- */
+  .video-placeholder:hover{border-color:var(--sage-dark);box-shadow:0 24px 40px -18px rgba(44,44,44,.4);}
+  .video-placeholder .play{transition:transform .25s ease-in-out,box-shadow .25s ease-in-out;}
+  .video-placeholder:hover .play{transform:scale(1.15);box-shadow:0 14px 28px -8px rgba(44,44,44,.5);}
+
+  /* ---- footer links + social hover ---- */
+  .footer-col a{position:relative;transition:color .25s ease-in-out;}
+  .footer-col a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:currentColor;transition:right .25s ease-in-out;}
+  .footer-col a:hover{text-decoration:none;color:#fff;}
+  .footer-col a:hover::after{right:0;}
+  .social a{transition:background .2s ease-in-out,border-color .2s ease-in-out,transform .25s ease-in-out,color .2s ease-in-out;}
+  .social a:hover{transform:translateY(-3px) scale(1.15);color:#fff;}
+
+  /* quiz error messages: colors/timing/spacing now set at .quiz-err's primary
+     definition (SiteSync-copy pass) — a simple opacity fade, no slide. */
+
+  /* ---- micro-interactions: firm tactile press ---- */
+  .btn:active,.quiz-back:active,.carousel-arrow:active{transform:scale(.95);}
+  .btn:disabled{opacity:.6;}
+
+  /* ---- hero background: slow linear scroll-driven zoom (progressive) ---- */
+  .hero-bg{will-change:transform;}
+  @supports (animation-timeline:scroll()){
+    @media (prefers-reduced-motion:no-preference){
+      .hero-bg{animation:fx-heroZoom linear both;animation-timeline:scroll(root);animation-range:0 640px;}
+      @keyframes fx-heroZoom{ to{transform:scale(1.04);} }
+    }
+  }
+
+  /* ================= reduced motion: safe static fallbacks ================= */
+  @media (prefers-reduced-motion:reduce){
+    .site-header,.hero-copy h1,.hero-sub,.badges li,.hero-form,.nav-list li,
+    .badges li svg{ animation:none!important; opacity:1!important; transform:none!important; }
+    .pre-reveal{ opacity:1!important; transform:none!important; }
+    .section-head,.video-placeholder,#services .service-card,#portfolio .project,
+    #testimonials .quote-card,#faq .faq-item,.quiz-err{ transition:none!important; }
+    .quiz-err:empty{ opacity:0; }
+    .logo:hover,.badges li:hover,.badges li:hover svg,#services .service-card:hover,
+    .service-card:hover .service-icon,.project:hover .project-name,#testimonials .quote-card:hover,
+    .social a:hover,
+    .video-placeholder:hover .play,.btn:active,.quiz-back:active,.carousel-arrow:active{ transform:none!important; }
+    .hero-bg{ animation:none!important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="#hero" class="logo">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+      </span>
+      Landscaping&nbsp;Co.
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul class="nav-list" id="navList">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a href="#hero-form" class="btn btn-primary btn-book">Book Now</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <h1>Transform Your Outdoor Space</h1>
+        <p class="hero-sub">Professional landscaping design and maintenance for residential and commercial properties.</p>
+        <ul class="badges">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+            Licensed &amp; Insured
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.2 6.8.6-5.1 4.5 1.5 6.7L12 16.9 5 20l1.5-6.7L1.4 8.8l6.8-.6z"/></svg>
+            5-Star Rating
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m9 15-2 7 5-3 5 3-2-7"/></svg>
+            20+ Years Experience
+          </li>
+        </ul>
+      </div>
+
+      <form class="hero-form" id="hero-form" novalidate>
+        <h2>Request a Free Estimate</h2>
+
+        <div class="quiz-intro" id="quizIntro">
+          <p class="quiz-intro-sub">Answer 4 quick questions &mdash; no obligation. We&rsquo;ll follow up within one business day.</p>
+          <button type="button" class="btn btn-primary btn-block" id="quizStart">Get Started</button>
+        </div>
+
+        <div class="quiz" id="quiz" hidden>
+          <div class="quiz-progress-wrap">
+            <span class="quiz-steplabel" id="quizStepLabel">Step 1 of 4</span>
+            <span class="quiz-progress"><span class="quiz-progress-fill" id="quizFill"></span></span>
+          </div>
+
+          <div class="quiz-body" id="quizBody">
+            <section class="quiz-step is-active" data-step="1">
+              <p class="quiz-q">Where should I reach you?</p>
+              <div class="quiz-field">
+                <label class="visually-hidden" for="q-name">Name</label>
+                <input type="text" id="q-name" name="name" autocomplete="name" placeholder="Your name" aria-describedby="err-name">
+              </div>
+              <p class="quiz-err" id="err-name" aria-live="polite"></p>
+              <div class="quiz-field">
+                <label class="visually-hidden" for="q-phone">Phone</label>
+                <input type="tel" id="q-phone" name="phone" autocomplete="tel" placeholder="Your phone number" aria-describedby="err-phone">
+              </div>
+              <p class="quiz-err" id="err-phone" aria-live="polite"></p>
+              <label class="quiz-consent">
+                <input type="checkbox" class="quiz-consent-input" id="q-sms" name="smsConsent" checked>
+                <span class="quiz-consent-box" aria-hidden="true"><svg class="quiz-consent-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                <span>Text me about my request. Message and data rates may apply. Message frequency varies. Reply STOP to opt out.</span>
+              </label>
+              <p class="quiz-consent-note">By submitting, you agree to be contacted by Landscaping&nbsp;Co. about your request.</p>
+            </section>
+
+            <section class="quiz-step" data-step="2" hidden>
+              <p class="quiz-q" id="q-type-label">What type of project are you interested in?</p>
+              <input type="hidden" id="q-type" name="projectType" value="">
+              <div class="quiz-options" role="radiogroup" aria-labelledby="q-type-label" aria-describedby="err-type" data-input="q-type">
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Landscaping Design">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <svg class="quiz-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                  <span class="quiz-option-label">Landscaping Design</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Hardscaping">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <svg class="quiz-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                  <span class="quiz-option-label">Hardscaping</span>
+                  <span class="quiz-option-sub">Patios, driveways &amp; walls</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Lawn Maintenance">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <svg class="quiz-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c0-6 2-10 2-10"/><path d="M12 20c0-8 0-14 0-14"/><path d="M20 20c0-6-2-10-2-10"/></svg>
+                  <span class="quiz-option-label">Lawn Maintenance</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Tree &amp; Shrub Services">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <svg class="quiz-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M12 15v6"/></svg>
+                  <span class="quiz-option-label">Tree &amp; Shrub Services</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Irrigation">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <svg class="quiz-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2s7 8.5 7 13a7 7 0 0 1-14 0c0-4.5 7-13 7-13Z"/></svg>
+                  <span class="quiz-option-label">Irrigation</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Seasonal Cleanup">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <svg class="quiz-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 3 9 13"/><path d="M4 21c3-1 5-1 7-3s2-5 1-7"/><circle cx="19.5" cy="4.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                  <span class="quiz-option-label">Seasonal Cleanup</span>
+                </button>
+              </div>
+              <p class="quiz-err" id="err-type" aria-live="polite"></p>
+            </section>
+
+            <section class="quiz-step" data-step="3" hidden>
+              <p class="quiz-q" id="q-scope-label">What&rsquo;s your project scope?</p>
+              <input type="hidden" id="q-scope" name="scope" value="">
+              <div class="quiz-options quiz-options--3" role="radiogroup" aria-labelledby="q-scope-label" aria-describedby="err-scope" data-input="q-scope">
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Small Residential">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <svg class="quiz-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 12 4l8 7"/><path d="M6 10v9h12v-9"/></svg>
+                  <span class="quiz-option-label">Small Residential</span>
+                  <span class="quiz-option-sub">Under 2,000 sq ft</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Large Residential">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <svg class="quiz-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12 8 6l4 4 4-4 6 6"/><path d="M4 11v9h16v-9"/></svg>
+                  <span class="quiz-option-label">Large Residential</span>
+                  <span class="quiz-option-sub">2,000+ sq ft</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Commercial">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <svg class="quiz-option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2"/></svg>
+                  <span class="quiz-option-label">Commercial</span>
+                </button>
+              </div>
+              <p class="quiz-err" id="err-scope" aria-live="polite"></p>
+            </section>
+
+            <section class="quiz-step" data-step="4" hidden>
+              <p class="quiz-q" id="q-date-label">When would you like to start?</p>
+              <div class="quiz-field">
+                <label class="quiz-label" for="q-date">Preferred start date</label>
+                <input type="date" id="q-date" name="date" aria-labelledby="q-date-label" aria-describedby="err-date">
+              </div>
+              <p class="quiz-err" id="err-date" aria-live="polite"></p>
+            </section>
+          </div>
+
+          <div class="quiz-nav">
+            <button type="button" class="quiz-back" id="quizBack" hidden>&lsaquo;&nbsp;Back</button>
+            <button type="button" class="btn btn-primary quiz-next is-locked" id="quizNext">Continue</button>
+          </div>
+
+          <p class="quiz-done" id="quizDone" hidden>Thanks! This is a demo &mdash; no request was actually sent.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= VIDEO (placeholder) ================= -->
+  <section class="video-section">
+    <div class="video-container">
+      <div class="section-head">
+        <p class="eyebrow">Our Story</p>
+        <h2>Meet the Owner</h2>
+      </div>
+      <div class="video-placeholder">
+        <span class="play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+        <p>Video Coming Soon</p>
+        <!-- Swap this div for a YouTube/Vimeo <iframe> or a self-hosted <video> tag later.
+             Example:
+             <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Meet the Owner"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowfullscreen loading="lazy"></iframe> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Our Services</p>
+        <h2>What We Offer</h2>
+        <p class="section-sub">From the first sketch to seasonal upkeep &mdash; one team for the whole yard.</p>
+      </div>
+      <div class="cards-3">
+        <article class="service-card">
+          <span class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M10 21v-5h4v5"/><path d="M9 10h.01M15 10h.01"/></svg>
+          </span>
+          <h3>Landscape Design</h3>
+          <p>Custom plans built around your site, your style, and how you actually use the yard &mdash; planting, grading, lighting, and layout, with clear drawings before we break ground.</p>
+        </article>
+        <article class="service-card">
+          <span class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="8" height="6" rx="1"/><rect x="13" y="4" width="8" height="6" rx="1"/><rect x="3" y="14" width="8" height="6" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg>
+          </span>
+          <h3>Hardscaping</h3>
+          <p>Patios, walkways, retaining walls, fire pits, and seating built from quality stone and pavers &mdash; engineered to hold up through freeze, thaw, and years of heavy use.</p>
+        </article>
+        <article class="service-card">
+          <span class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-3 2-5 5-5 0 3-2 5-5 5Z"/><path d="M12 14c0-3-2-5-5-5 0 3 2 5 5 5Z"/><path d="M5 22h14"/></svg>
+          </span>
+          <h3>Maintenance</h3>
+          <p>Weekly and seasonal care that keeps everything sharp: mowing, pruning, mulching, fertilization, cleanups, and irrigation checks on a schedule that suits you.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PORTFOLIO ================= -->
+  <section class="section section--tint" id="portfolio">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Portfolio</p>
+        <h2>Recent Projects</h2>
+        <p class="section-sub">A few spaces we&rsquo;ve designed, built, and now help maintain.</p>
+      </div>
+      <div class="portfolio-grid">
+        <article class="project project--a">
+          <div class="project-media" aria-hidden="true"></div>
+          <div class="project-overlay">
+            <span class="project-name">Hillside Terrace Garden</span>
+            <span class="project-cta">View Project &rarr;</span>
+          </div>
+        </article>
+        <article class="project project--b">
+          <div class="project-media" aria-hidden="true"></div>
+          <div class="project-overlay">
+            <span class="project-name">Modern Paver Patio</span>
+            <span class="project-cta">View Project &rarr;</span>
+          </div>
+        </article>
+        <article class="project project--c">
+          <div class="project-media" aria-hidden="true"></div>
+          <div class="project-overlay">
+            <span class="project-name">Front Yard Renewal</span>
+            <span class="project-cta">View Project &rarr;</span>
+          </div>
+        </article>
+        <article class="project project--d">
+          <div class="project-media" aria-hidden="true"></div>
+          <div class="project-overlay">
+            <span class="project-name">Backyard Retreat</span>
+            <span class="project-cta">View Project &rarr;</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Testimonials</p>
+        <h2>What Our Clients Say</h2>
+      </div>
+      <div class="cards-3">
+        <figure class="quote-card">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>&ldquo;They redesigned our entire backyard and it&rsquo;s now the best room in the house. The crew was on time, tidy, and genuinely cared about the details.&rdquo;</blockquote>
+          <figcaption>Sarah M. &mdash; Homeowner</figcaption>
+        </figure>
+        <figure class="quote-card">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>&ldquo;We hired them for our office property&rsquo;s maintenance contract. The grounds have never looked better and the billing is painless.&rdquo;</blockquote>
+          <figcaption>David R. &mdash; Property Manager</figcaption>
+        </figure>
+        <figure class="quote-card">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>&ldquo;From the 3D design to the final walkthrough, everything was clear and stress-free. The new patio and lighting completely changed how we use the space.&rdquo;</blockquote>
+          <figcaption>Priya &amp; Tom K. &mdash; Homeowners</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section section--tint" id="faq">
+    <div class="container faq-container">
+      <div class="section-head">
+        <p class="eyebrow">FAQ</p>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <button type="button" class="faq-q" id="fq-1" aria-expanded="true" aria-controls="fa-1">
+            What services do you offer?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" id="fa-1" role="region" aria-labelledby="fq-1">
+            <div class="faq-a-inner"><p>Full-service landscape design, hardscaping (patios, walkways, retaining walls, fire pits), planting, irrigation, low-voltage lighting, and year-round maintenance for both homes and commercial properties.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" id="fq-2" aria-expanded="true" aria-controls="fa-2">
+            Do you offer free consultations?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" id="fa-2" role="region" aria-labelledby="fq-2">
+            <div class="faq-a-inner"><p>Yes &mdash; all consultations and on-site estimates are free, with no obligation.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" id="fq-3" aria-expanded="true" aria-controls="fa-3">
+            What&rsquo;s your service area?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" id="fa-3" role="region" aria-labelledby="fq-3">
+            <div class="faq-a-inner"><p>We serve the greater metro area and surrounding suburbs, roughly within a 40-mile radius of our shop. Not sure whether you&rsquo;re in range? Send your address through the estimate form and we&rsquo;ll confirm.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" id="fq-4" aria-expanded="true" aria-controls="fa-4">
+            Do you handle maintenance?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" id="fa-4" role="region" aria-labelledby="fq-4">
+            <div class="faq-a-inner"><p>We do. Weekly or bi-weekly mowing, seasonal cleanups, pruning, mulching, fertilization, and irrigation checks are all available as recurring plans or one-time visits.</p></div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" id="fq-5" aria-expanded="true" aria-controls="fa-5">
+            How do I get a quote?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" id="fa-5" role="region" aria-labelledby="fq-5">
+            <div class="faq-a-inner"><p>Fill out the &ldquo;Request a Free Estimate&rdquo; form at the top of the page with a few details about your project. We&rsquo;ll follow up within one business day to schedule a walkthrough.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer" id="contact">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#hero" class="logo">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+        </span>
+        Landscaping&nbsp;Co.
+      </a>
+      <p>Design, build, and care for outdoor spaces that work as hard as they look.</p>
+    </div>
+
+    <nav class="footer-col" aria-label="Footer quick links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+15551234567">(555) 123-4567</a></li>
+        <li><a href="mailto:hello@landscapingco.example">hello@landscapingco.example</a></li>
+        <li>1420 Greenway Blvd, Suite 3<br>Springfield, ST 00000</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <div class="social">
+        <a href="#" data-noop aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" data-noop aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1Z"/></svg>
+        </a>
+        <a href="#" data-noop aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3 8.5h3.9V21H3V8.5ZM9.5 8.5h3.7v1.7h.05c.52-.98 1.8-2 3.7-2 3.95 0 4.68 2.6 4.68 6V21h-3.9v-5.5c0-1.3-.02-3-1.85-3-1.85 0-2.13 1.44-2.13 2.9V21H9.5V8.5Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>&copy; <span id="year"></span> Landscaping Co. All rights reserved.</span>
+    <span>Licensed &amp; Insured &middot; Free Estimates</span>
+  </div>
+</footer>
+
+<!-- ================= LuminaSales chat side panel ================= -->
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="Chat with Landscaping Co. Support">
+  <div class="chat-panel-header">
+    <h3>Landscaping Co. Support</h3>
+    <button type="button" class="chat-panel-close" aria-label="Close chat">&times;</button>
+  </div>
+  <div class="chat-panel-content">
+    <!-- Lumina live-demo embed: pasted as provided, unmodified. .chat-panel-content
+         has no overflow:hidden and no fixed height on this div, so the embed can
+         measure and report its own height. -->
+    <div data-lumina-embed="emb_518ass198qj8tbm091rhze"
+         data-lumina-mode="inline"
+         data-lumina-theme="auto"></div>
+  </div>
+</div>
+
+<button type="button" class="chat-button" id="chatButton" aria-expanded="false" aria-controls="chatPanel" aria-label="Open chat">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+  </svg>
+</button>
+
+<script src="https://ncsitesync.luminasales.io/embed.js" async></script>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* year */
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  /* sticky-header shadow on scroll */
+  var header = document.getElementById('header');
+  function onScroll(){ if (header) header.classList.toggle('is-scrolled', window.scrollY > 8); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* mobile nav toggle */
+  var toggle = document.getElementById('navToggle');
+  var navList = document.getElementById('navList');
+  if (toggle && navList){
+    toggle.addEventListener('click', function(){
+      var open = navList.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navList.addEventListener('click', function(e){
+      if (e.target.closest('a')){
+        navList.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* placeholder links (social, project cards) do nothing */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[data-noop]');
+    if (a) e.preventDefault();
+  });
+
+  /* hero booking quiz — 4 inline steps, demo only (never submits anywhere) */
+  (function initQuiz(){
+    var card = document.getElementById('hero-form');
+    if (!card) return;
+    var intro   = document.getElementById('quizIntro');
+    var quiz    = document.getElementById('quiz');
+    var startBtn= document.getElementById('quizStart');
+    var body    = document.getElementById('quizBody');
+    var fill    = document.getElementById('quizFill');
+    var label   = document.getElementById('quizStepLabel');
+    var backBtn = document.getElementById('quizBack');
+    var nextBtn = document.getElementById('quizNext');
+    var done    = document.getElementById('quizDone');
+    var steps   = Array.prototype.slice.call(body.querySelectorAll('.quiz-step'));
+    if (!steps.length) return;
+
+    var TOTAL = steps.length;
+    var step = 1;
+    var finished = false;
+
+    /* JS baseline: quiz lives in the DOM but stays collapsed + inert until
+       "Get Started" expands it (700ms unfold). No-JS users keep the [hidden]. */
+    quiz.removeAttribute('hidden');
+    quiz.inert = true;
+    function isOpen(){ return quiz.classList.contains('is-open'); }
+
+    var nameEl  = card.querySelector('[name="name"]');
+    var phoneEl = card.querySelector('[name="phone"]');
+    var typeEl  = card.querySelector('[name="projectType"]');
+    var scopeEl = card.querySelector('[name="scope"]');
+    var dateEl  = card.querySelector('[name="date"]');
+    function scopeVal(){ return scopeEl ? scopeEl.value : ''; }
+    function digits(s){ return (s || '').replace(/\D/g, ''); }
+
+    /* icon/button option groups (project type, project scope) — single-select,
+       mirrored into a hidden input so the existing name/value validation below
+       (and the generic change listener) work exactly as they did for the
+       select/radio inputs they replace. */
+    Array.prototype.forEach.call(card.querySelectorAll('.quiz-options'), function(group){
+      var input = document.getElementById(group.getAttribute('data-input'));
+      var options = Array.prototype.slice.call(group.querySelectorAll('.quiz-option'));
+      function select(btn){
+        options.forEach(function(o){
+          var on = (o === btn);
+          o.classList.toggle('is-selected', on);
+          o.setAttribute('aria-checked', on ? 'true' : 'false');
+          o.tabIndex = on ? 0 : -1;
+        });
+        group.classList.add('has-selection');
+        if (input){
+          input.value = btn.getAttribute('data-value') || '';
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+      options.forEach(function(o, i){ o.tabIndex = (i === 0) ? 0 : -1; });   /* roving tabindex, APG radiogroup pattern */
+      group.addEventListener('click', function(e){
+        var btn = e.target.closest('.quiz-option');
+        if (btn && group.contains(btn)) select(btn);
+      });
+      group.addEventListener('keydown', function(e){
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowDown' && e.key !== 'ArrowLeft' && e.key !== 'ArrowUp') return;
+        var i = options.indexOf(document.activeElement);
+        if (i === -1) return;
+        e.preventDefault();
+        var dir = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : -1;
+        var next = options[(i + dir + options.length) % options.length];
+        select(next);
+        next.focus();
+      });
+    });
+
+    /* which visible input (if any) a given error paragraph reddens the border of */
+    var ERR_FIELD = { 'err-name':'q-name', 'err-phone':'q-phone', 'err-date':'q-date' };
+    function setErr(id, msg){
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = msg || '';
+      var fieldId = ERR_FIELD[id];
+      if (fieldId){
+        var f = document.getElementById(fieldId);
+        if (f) f.classList.toggle('has-error', !!msg);
+      }
+      if (isOpen()) setBodyHeight();
+    }
+    function clearErrs(){
+      ['err-name','err-phone','err-type','err-scope','err-date'].forEach(function(id){
+        var el = document.getElementById(id); if (el) el.textContent = '';
+        var fieldId = ERR_FIELD[id];
+        if (fieldId){ var f = document.getElementById(fieldId); if (f) f.classList.remove('has-error'); }
+      });
+    }
+
+    function valid(n){
+      if (n === 1) return nameEl.value.trim() !== '' && digits(phoneEl.value).length >= 7;
+      if (n === 2) return typeEl.value !== '';
+      if (n === 3) return scopeVal() !== '';
+      if (n === 4) return dateEl.value !== '';
+      return true;
+    }
+    function showErrs(n){
+      if (n === 1){
+        setErr('err-name',  nameEl.value.trim() === '' ? 'Please enter your name.' : '');
+        setErr('err-phone', digits(phoneEl.value).length >= 7 ? ''
+          : (phoneEl.value.trim() === '' ? 'Please enter your phone number.' : 'Please enter a valid phone number.'));
+      } else if (n === 2){
+        setErr('err-type',  typeEl.value === '' ? 'Please choose a project type.' : '');
+      } else if (n === 3){
+        setErr('err-scope', scopeVal() === '' ? 'Please select a project scope.' : '');
+      } else if (n === 4){
+        setErr('err-date',  dateEl.value === '' ? 'Please choose a preferred start date.' : '');
+      }
+    }
+
+    function syncNext(){
+      var ok = valid(step);
+      nextBtn.classList.toggle('is-locked', !ok);
+      nextBtn.setAttribute('aria-disabled', ok ? 'false' : 'true');
+      nextBtn.textContent = (step === TOTAL) ? 'Send Request' : 'Next';
+    }
+    function setProgress(){
+      fill.style.width = (step / TOTAL * 100) + '%';
+      label.textContent = 'Step ' + step + ' of ' + TOTAL;
+    }
+    function setBodyHeight(){
+      var active = steps[step - 1];
+      if (active) body.style.height = active.offsetHeight + 'px';
+    }
+
+    /* Step transition: current step fades out + slides up 20px; ~150ms later
+       (staggered, not simultaneous) the next step fades in sliding down from
+       -20px into place. nxt is unhidden immediately (not delayed) so its real
+       height is measurable right away and .quiz-body can start resizing in
+       step with the outgoing fade — only the next step's own reveal waits
+       for the stagger. */
+    function goTo(n, dir){
+      if (finished || n < 1 || n > TOTAL || n === step) return;
+      var cur = steps[step - 1];
+      var nxt = steps[n - 1];
+      clearErrs();
+      nxt.hidden = false;
+
+      if (reduceMotion){
+        cur.classList.remove('is-active'); cur.hidden = true;
+        nxt.classList.add('is-active');
+      } else {
+        nxt.style.transition = 'none';
+        nxt.style.opacity = '0';
+        nxt.style.transform = 'translateY(-20px)';
+        void nxt.offsetWidth;
+
+        cur.classList.remove('is-active');
+        cur.style.transition = 'opacity 250ms ease-out, transform 250ms ease-out';
+        cur.style.opacity = '0';
+        cur.style.transform = 'translateY(-20px)';
+
+        setTimeout(function(){
+          nxt.style.transition = 'opacity 250ms ease-out, transform 250ms ease-out';
+          nxt.classList.add('is-active');
+          nxt.style.opacity = '1';
+          nxt.style.transform = 'translateY(0)';
+        }, 150);
+
+        setTimeout(function(){
+          cur.hidden = true; cur.style.cssText = ''; nxt.style.cssText = '';
+        }, 150 + 260);
+      }
+
+      step = n;
+      setProgress();
+      body.style.height = nxt.offsetHeight + 'px';
+      backBtn.hidden = (step === 1);
+      syncNext();
+      var f = nxt.querySelector('input, select');
+      if (f){ try { f.focus({ preventScroll: true }); } catch (e) { f.focus(); } }
+    }
+
+    startBtn.addEventListener('click', function(){
+      intro.hidden = true;
+      startBtn.disabled = true;                 /* guard against double-trigger mid-animation */
+      quiz.inert = false;
+      setProgress();
+      backBtn.hidden = true;
+      syncNext();
+      void quiz.offsetWidth;                    /* commit collapsed state before transitioning */
+      quiz.classList.add('is-open');            /* 700ms unfold */
+      requestAnimationFrame(setBodyHeight);     /* measure step now that the panel has layout */
+      var f = steps[0].querySelector('input');
+      var delay = reduceMotion ? 0 : 700;
+      setTimeout(function(){
+        quiz.classList.add('is-expanded');     /* lift the max-height cap so later steps can grow freely */
+        setBodyHeight();
+        if (f){ try { f.focus({ preventScroll: true }); } catch (e) {} }
+      }, delay);
+    });
+
+    /* live re-check + forgiving clear-on-type */
+    card.addEventListener('input', function(){ if (isOpen()){ syncNext(); clearErrs(); setBodyHeight(); } });
+    card.addEventListener('change', function(){ if (isOpen()){ syncNext(); clearErrs(); setBodyHeight(); } });
+
+    /* step 1: errors only after the field is left empty/invalid */
+    if (nameEl) nameEl.addEventListener('blur', function(){
+      if (step === 1 && nameEl.value.trim() === '') setErr('err-name', 'Please enter your name.');
+    });
+    if (phoneEl) phoneEl.addEventListener('blur', function(){
+      if (step !== 1) return;
+      if (phoneEl.value.trim() === '') setErr('err-phone', 'Please enter your phone number.');
+      else if (digits(phoneEl.value).length < 7) setErr('err-phone', 'Please enter a valid phone number.');
+    });
+
+    backBtn.addEventListener('click', function(){ goTo(step - 1, -1); });
+
+    nextBtn.addEventListener('click', function(){
+      if (finished) return;
+      if (!valid(step)){ showErrs(step); return; }           /* "trying to advance without a selection" */
+      if (step < TOTAL){ goTo(step + 1, 1); return; }
+      /* final step — demo only, no submission */
+      finished = true;
+      done.hidden = false;
+      fill.style.width = '100%';
+      nextBtn.classList.add('is-locked');
+      nextBtn.textContent = 'Request Received (Demo)';
+      nextBtn.setAttribute('aria-disabled', 'true');
+      backBtn.hidden = true;
+      setBodyHeight();
+    });
+
+    window.addEventListener('resize', function(){ if (isOpen()) setBodyHeight(); }, { passive: true });
+  })();
+
+  /* FAQ accordion — single-open, grid-rows animation, inert closed panels.
+     No-JS default is "all open"; adding .is-enhanced collapses them. */
+  (function(){
+    var wrap = document.querySelector('.faq');
+    if (!wrap) return;
+    var items = Array.prototype.slice.call(wrap.querySelectorAll('.faq-item'));
+    if (!items.length) return;
+    wrap.classList.add('is-enhanced');
+    var btns = [];
+
+    items.forEach(function(item){
+      var btn = item.querySelector('.faq-q');
+      var panel = item.querySelector('.faq-a');
+      if (!btn) return;
+      btns.push(btn);
+      item.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      if (panel) panel.inert = true;
+
+      btn.addEventListener('click', function(){
+        var open = !item.classList.contains('is-open');
+        items.forEach(function(other){
+          var ob = other.querySelector('.faq-q');
+          var op = other.querySelector('.faq-a');
+          var on = (other === item) && open;
+          other.classList.toggle('is-open', on);
+          if (ob) ob.setAttribute('aria-expanded', on ? 'true' : 'false');
+          if (op) op.inert = !on;
+        });
+      });
+
+      btn.addEventListener('keydown', function(e){
+        var i = btns.indexOf(btn);
+        if (e.key === 'ArrowDown'){ e.preventDefault(); btns[(i + 1) % btns.length].focus(); }
+        else if (e.key === 'ArrowUp'){ e.preventDefault(); btns[(i - 1 + btns.length) % btns.length].focus(); }
+        else if (e.key === 'Home'){ e.preventDefault(); btns[0].focus(); }
+        else if (e.key === 'End'){ e.preventDefault(); btns[btns.length - 1].focus(); }
+      });
+    });
+  })();
+
+  /* nav scroll-spy — highlight the section currently in view */
+  var spyLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-list a[href^="#"]'));
+  if ('IntersectionObserver' in window && spyLinks.length){
+    var map = {};
+    spyLinks.forEach(function(a){
+      var el = document.getElementById(a.getAttribute('href').slice(1));
+      if (el) map[el.id] = a;
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          spyLinks.forEach(function(a){ a.classList.remove('is-active'); });
+          if (map[en.target.id]) map[en.target.id].classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    Object.keys(map).forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+
+  /* LuminaSales chat side panel — this only opens/closes the panel; everything
+     inside .chat-panel-content (the call, the transcript, sending anything)
+     is owned entirely by the embed. */
+  (function initChatPanel(){
+    var button = document.getElementById('chatButton');
+    var panel  = document.getElementById('chatPanel');
+    var closeB = panel ? panel.querySelector('.chat-panel-close') : null;
+    if (!button || !panel) return;
+
+    panel.inert = true;   /* closed at load — out of tab order / AT until opened */
+
+    function open(){
+      panel.classList.add('open');
+      panel.inert = false;
+      button.setAttribute('aria-expanded', 'true');
+      button.setAttribute('aria-label', 'Close chat');
+      if (closeB){ try { closeB.focus({ preventScroll: true }); } catch (e) {} }
+    }
+    function close(){
+      panel.classList.remove('open');
+      panel.inert = true;
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-label', 'Open chat');
+      try { button.focus({ preventScroll: true }); } catch (e) {}
+    }
+
+    button.addEventListener('click', function(e){
+      e.stopPropagation();
+      panel.classList.contains('open') ? close() : open();
+    });
+    if (closeB) closeB.addEventListener('click', close);
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && panel.classList.contains('open')) close();
+    });
+    /* click outside closes it */
+    document.addEventListener('click', function(e){
+      if (panel.classList.contains('open') && !panel.contains(e.target) && !button.contains(e.target)) close();
+    });
+    /* clicks inside the panel never bubble out to that outside-click handler */
+    panel.addEventListener('click', function(e){ e.stopPropagation(); });
+  })();
+
+  /* scroll reveals + entrance polish (transform/opacity only) */
+  (function initReveal(){
+    var groups = [
+      ['.section-head', 0],
+      ['#services .service-card', 70],
+      ['#portfolio .project', 60],
+      ['#testimonials .quote-card', 70],
+      ['#faq .faq-item', 50],
+      ['.video-placeholder', 0]
+    ];
+    var targets = [];
+    groups.forEach(function(g){
+      Array.prototype.forEach.call(document.querySelectorAll(g[0]), function(el, i){
+        targets.push({ el: el, delay: i * g[1] });
+      });
+    });
+    if (!targets.length) return;
+
+    if (reduceMotion || !('IntersectionObserver' in window)){
+      targets.forEach(function(t){ t.el.classList.add('in'); });
+      return;
+    }
+
+    var vh = window.innerHeight || 800;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        el.classList.remove('pre-reveal');
+        el.classList.add('in');
+        io.unobserve(el);
+        setTimeout(function(){ el.style.transitionDelay = ''; }, 900);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    targets.forEach(function(t){
+      /* already on screen at load → just show it, no pre-hide flash */
+      if (t.el.getBoundingClientRect().top < vh * 0.9){ t.el.classList.add('in'); return; }
+      t.el.classList.add('pre-reveal');
+      if (t.delay) t.el.style.transitionDelay = t.delay + 'ms';
+      io.observe(t.el);
+    });
+  })();
+})();
+</script>
+</body>
+</html>
