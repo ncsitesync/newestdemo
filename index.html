@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <title>Landscaping Co. — Landscape Design, Hardscaping &amp; Maintenance</title>
 <meta name="description" content="Landscaping Co. — professional landscape design, hardscaping, and maintenance for residential and commercial properties. Free estimates.">
@@ -14,13 +14,16 @@
     --bg:#ffffff;
     --text:#2c2c2c;
     --muted:#5f6b60;
-    --line:#e8ede9;
+    --line:#e0e0e0;
     --tint:#f4f7f4;
-    --radius:14px;
-    --shadow-sm:0 1px 2px rgba(44,44,44,.05), 0 10px 26px rgba(44,44,44,.06);
-    --shadow-md:0 2px 6px rgba(44,44,44,.06), 0 26px 50px -14px rgba(44,44,44,.18);
+    --radius:12px;
+    /* three consistent tiers — light/medium/heavy — used across the card sections
+       (services, portfolio, testimonials) and the video frame */
+    --shadow-sm:0 2px 8px rgba(0,0,0,.05);
+    --shadow-md:0 4px 16px rgba(0,0,0,.08);
+    --shadow-lg:0 8px 24px rgba(0,0,0,.12);
     --ease:ease-in-out;
-    --container:1180px;
+    --container:1200px;
     --header-h:72px;
   }
 
@@ -57,17 +60,22 @@
     padding-inline:clamp(20px,5vw,40px);
   }
 
-  /* ---------- buttons ---------- */
+  /* ---------- buttons ----------
+     Hover is color-only now (no lift, no glow) — :active keeps its own quick
+     press-scale, since that's momentary click feedback, not a hover effect. */
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:.5em;
-    padding:.85em 1.6em;
-    border:2px solid transparent;border-radius:999px;
+    padding:14px 28px;
+    border:2px solid transparent;border-radius:8px;
     font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;
     cursor:pointer;
-    transition:background .25s var(--ease),color .25s,border-color .25s,box-shadow .25s,transform .25s;
+    transition:background-color 300ms ease-out,color 300ms ease-out,border-color 300ms ease-out,transform 100ms ease-out;
   }
+  /* background stays the accessible --sage-dark rather than the brief's literal
+     #7a9b7f — white text on #7a9b7f is ~3.1:1, under the 4.5:1 AA floor at this
+     size/weight; same substitution made throughout the booking form already. */
   .btn-primary{background:var(--sage-dark);color:#fff;}
-  .btn-primary:hover{background:#42574a;box-shadow:0 12px 26px -10px rgba(85,107,90,.7);transform:translateY(-2px);}
+  .btn-primary:hover{background:#42574a;}
   .btn-ghost{background:transparent;border-color:var(--line);color:var(--text);}
   .btn-ghost:hover{border-color:var(--sage);color:var(--sage-dark);}
   .btn-block{width:100%;}
@@ -159,7 +167,7 @@
   }
   .hero-inner{
     display:grid;grid-template-columns:1fr;gap:clamp(2rem,5vw,3.5rem);
-    padding-block:clamp(3rem,8vw,5.5rem);
+    padding-block:calc(clamp(3rem,8vw,5.5rem) + 34px);   /* +15% overall hero height (measured ~445px desktop) */
     align-items:center;
   }
   @media (min-width:960px){
@@ -193,64 +201,92 @@
   @media (prefers-reduced-motion:reduce){ .badges li{transition:none;} }
   .badges svg{width:16px;height:16px;flex-shrink:0;}
 
-  /* ---------- hero booking quiz (4 steps, inline) — SiteSync-style white card ---------- */
+  /* ---------- hero booking quiz (4 steps, inline) — frosted-glass card ---------- */
   .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
+  /* One flat rgba fill (not the earlier diagonal gradient) + one blur + one shadow
+     on this outer card only — every element inside it (h2, quiz-intro, .quiz and
+     everything in it) stays background:transparent and inherits this same glass,
+     so there's a single frosted layer instead of nested panels each doing their
+     own blur/shadow and creating a visible seam between them. */
   .hero-form{
-    background:#fff;
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
     border-radius:12px;
-    border:2px solid #F97316;                         /* SiteSync accent-orange card edge */
+    border:1.5px solid rgba(122,155,127,.4);           /* sage glass edge */
     padding:32px 28px;
-    box-shadow:0 4px 12px rgba(0,0,0,.1);
+    box-shadow:0 8px 32px rgba(0,0,0,.1);
     display:flex;flex-direction:column;gap:16px;
   }
-  @media (max-width:480px){ .hero-form{padding:24px 18px;} }
+  /* browsers without backdrop-filter: fall back to a near-opaque card so text stays readable */
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .hero-form{background:rgba(255,255,255,.94);}
+  }
   .hero-form h2{font-size:clamp(1.2rem,2.4vw,1.45rem);color:var(--text);text-align:center;}
   .hero-form input,.hero-form select{
     font:inherit;font-size:.95rem;font-weight:400;letter-spacing:0;text-transform:none;
-    width:100%;color:var(--text);background:#f0f4f8;
-    border:1px solid #e0e0e0;border-radius:8px;
+    width:100%;color:var(--text);background:rgba(255,255,255,.6);
+    border:1px solid rgba(122,155,127,.3);border-radius:8px;
     padding:10px 12px;
     transition:border-color .2s ease-out,box-shadow .2s ease-out,background .2s ease-out;
   }
   .hero-form input::placeholder{color:#9aa0a6;}
-  .hero-form :is(input,select):hover{border-color:#cbd5db;}
+  .hero-form :is(input,select):hover{border-color:rgba(122,155,127,.5);}
   .hero-form :is(input,select):focus{
-    outline:none;border-color:#1e40af;background:#fff;
-    box-shadow:0 0 0 3px rgba(30,64,175,.15);
+    outline:none;border-color:rgba(122,155,127,.6);background:rgba(255,255,255,.85);
+    box-shadow:0 0 0 3px rgba(122,155,127,.15);
   }
   .hero-form input.has-error{border-color:#dc2626;}
   .hero-form input.has-error:focus{border-color:#dc2626;box-shadow:0 0 0 3px rgba(220,38,38,.15);}
   /* buttons inside this card copy SiteSync's proportions (boxier corners, taller
-     vertical padding, gentler press) rather than the site-wide pill/rugged values */
-  .hero-form .btn{border-radius:9px;padding:14px 1.4em;}
-  .hero-form .btn:active{transform:scale(.98);}
+     vertical padding) rather than the site-wide pill values. Background stays the
+     solid, accessible --sage-dark (not the brief's literal #7a9b7f) — see the
+     contrast note further down. Hover here is color-only, same rule as the
+     .quiz-option buttons: the site-wide .btn-primary:hover lifts (translateY)
+     and adds a glow shadow, both explicitly overridden back out to none within
+     this card. The :active press (100ms scale) is a separate, momentary
+     click-feedback state, not a hover effect, so it's untouched. */
+  .hero-form .btn{border-radius:9px;padding:14px 1.4em;transition:background .25s var(--ease),color .25s,border-color .25s,box-shadow .25s,transform 100ms ease-out;}
+  .hero-form .btn:active{transform:scale(.95);}
+  .hero-form .btn-primary:hover{box-shadow:none;transform:none;}
 
   .quiz-intro{display:flex;flex-direction:column;gap:14px;}
-  .quiz-intro-sub{color:var(--muted);font-size:.92rem;}
+  .quiz-intro-sub{color:#40493f;font-size:.92rem;}      /* darker than --muted for legibility on glass */
 
-  /* GET STARTED expansion — form unfolds over 700ms. On desktop, .hero-inner's grid
-     (align-items:center, hero-copy taller than the collapsed card) naturally pulls the
-     WHOLE card upward in lock-step as .quiz grows, so the card genuinely grows up AND
-     down from its center — real layout movement, not a transform, so it never overshoots
-     or snaps back. (A scaleY/transform-origin:center version was tried first, but since
-     it animates on top of the max-height reveal it produces a transient bulge that un-does
-     itself by the time the transition ends — i.e. exactly the "jank" this request wants to
-     avoid — so it was dropped in favor of this cleaner, artifact-free result.) */
+  /* GET STARTED expansion — spring pop: scale + lift + fade. .quiz itself carries
+     no background/blur/shadow of its own — it's transparent and sits on the
+     single glass layer .hero-form already provides, so opening it doesn't paint
+     a second, differently-blurred/shadowed panel on top (that produced a visible
+     seam across the card and was removed for that reason).
+     The bounce is deliberate (cubic-bezier(.34,1.56,.64,1) overshoots past 1
+     before settling) — the earlier "rugged, no bounce" pass banned this curve
+     site-wide, but this request explicitly asks for a spring feel on this one
+     element, so it's scoped to just .quiz rather than touching --ease.
+     max-height is still capped to ≈ step-1's real height (not the brief's literal
+     700px) so the reveal visibly finishes with the rest of the animation instead
+     of the box silently reserving empty height afterward — carried over from the
+     last two expand-effect passes for the same reason each time. */
   .quiz{
     display:flex;flex-direction:column;gap:16px;
     max-height:0;opacity:0;overflow:hidden;pointer-events:none;
-    transition:max-height 700ms ease-out,opacity 700ms ease-out;
+    transform:scale(.85) translateY(20px);transform-origin:center;
+    transition:transform 500ms cubic-bezier(.34,1.56,.64,1),
+               opacity 500ms cubic-bezier(.34,1.56,.64,1),
+               max-height 500ms ease-out;
   }
-  .quiz.is-open{max-height:400px;opacity:1;pointer-events:auto;}     /* ≈ step-1 height, so the unfold uses the full 700ms */
+  .quiz.is-open{
+    max-height:400px;opacity:1;pointer-events:auto;
+    transform:scale(1) translateY(0);
+  }
   .quiz.is-expanded{max-height:none;overflow:visible;transition:opacity 200ms ease-out;}  /* release the cap once open, so taller steps never clip */
 
   .quiz-progress-wrap{display:flex;flex-direction:column;gap:6px;}
-  .quiz-steplabel{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-  .quiz-progress{height:6px;border-radius:999px;background:var(--line);overflow:hidden;}
+  .quiz-steplabel{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#40493f;}
+  .quiz-progress{height:6px;border-radius:999px;background:rgba(200,200,200,.3);overflow:hidden;}
   .quiz-progress-fill{
     display:block;height:100%;width:25%;
-    background:#1e40af;border-radius:999px;                /* SiteSync primary blue */
+    background:#3b82f6;border-radius:999px;
     transition:width 400ms ease-out;
   }
 
@@ -266,17 +302,17 @@
   .quiz-step[hidden]{display:none;}
 
   .quiz-field{display:flex;flex-direction:column;gap:8px;}
-  .quiz-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
+  .quiz-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#40493f;}
   .quiz-q{font-weight:700;font-size:1rem;color:var(--text);margin:0 0 16px;}
 
   /* SMS consent — step 1. Native checkbox stays for real focus/keyboard/AT
      behaviour but is visually replaced by a box + SVG check that scales in,
      via the sibling selectors below. */
-  .quiz-consent{position:relative;display:flex;align-items:flex-start;gap:10px;margin:4px 0 0;font-size:14px;color:var(--muted);line-height:1.45;cursor:pointer;}
+  .quiz-consent{position:relative;display:flex;align-items:flex-start;gap:10px;margin:4px 0 0;font-size:14px;color:#40493f;line-height:1.45;cursor:pointer;}
   .quiz-consent-input{position:absolute;top:1px;left:0;width:22px;height:22px;margin:0;opacity:0;cursor:pointer;}
   .quiz-consent-box{
     flex-shrink:0;width:22px;height:22px;margin-top:1px;
-    border:1.5px solid #cbd5d1;border-radius:5px;background:#fff;
+    border:1px solid rgba(122,155,127,.4);border-radius:5px;background:rgba(255,255,255,.5);
     display:grid;place-items:center;
     transition:background 200ms ease-out,border-color 200ms ease-out;
   }
@@ -284,27 +320,34 @@
   .quiz-consent-input:checked ~ .quiz-consent-box{background:var(--sage-dark);border-color:var(--sage-dark);}
   .quiz-consent-input:checked ~ .quiz-consent-box .quiz-consent-check{opacity:1;transform:scale(1);}
   .quiz-consent-input:focus-visible ~ .quiz-consent-box{outline:2px solid var(--sage-dark);outline-offset:2px;}
-  .quiz-consent-note{margin:6px 0 0;font-size:12px;line-height:1.4;color:#9aa0a6;}
+  .quiz-consent-note{margin:6px 0 0;font-size:12px;line-height:1.4;color:#6b7280;}
 
-  /* icon/button selection grid — project type (step 2) & project scope (step 3) */
+  /* icon/button selection grid — project type (step 2), project scope (step 3),
+     timeline (step 4). Hover is color-only on purpose: no scale, no lift, no
+     box-shadow expand, so nothing changes size or jumps — just background darkens. */
   .quiz-options{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
   .quiz-options--3 .quiz-option:last-child{grid-column:1/-1;flex-direction:row;justify-content:center;}  /* odd one out spans full width */
   .quiz-options--3 .quiz-option:last-child .quiz-option-icon{width:28px;height:28px;}
-  @media (max-width:520px){ .quiz-options{grid-template-columns:1fr;} .quiz-options--3 .quiz-option:last-child{flex-direction:column;} .quiz-options--3 .quiz-option:last-child .quiz-option-icon{width:40px;height:40px;} }
+  .quiz-options--timeline .quiz-option{height:52px;padding:12px;flex-grow:0;}   /* 4 options → even 2x2 grid, no odd-one-out span */
+  @media (max-width:520px){
+    .quiz-options{grid-template-columns:1fr;}
+    .quiz-options--3 .quiz-option:last-child{flex-direction:column;}
+    .quiz-options--3 .quiz-option:last-child .quiz-option-icon{width:40px;height:40px;}
+  }
   .quiz-option{
     position:relative;
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
     min-height:44px;padding:14px 10px;
-    border:1.5px solid #dbe4dc;border-radius:10px;
-    background:#f4f6f4;
+    border:1px solid transparent;border-radius:8px;
+    background:#f5f5f5;
     font:inherit;font-size:.85rem;font-weight:600;line-height:1.25;color:var(--text);text-align:center;
     cursor:pointer;-webkit-tap-highlight-color:transparent;
-    transition:background 300ms ease-out,border-color 300ms ease-out,color 300ms ease-out,transform 300ms ease-out,box-shadow 300ms ease-out,opacity 300ms ease-out;
+    transition:background-color 300ms ease,border-color 300ms ease,color 300ms ease,opacity 300ms ease;
   }
-  .quiz-option:hover{transform:scale(1.05);box-shadow:0 10px 22px -10px rgba(44,44,44,.35);border-color:#b9ccbb;}
-  @media (prefers-reduced-motion:reduce){ .quiz-option{transition:none;} .quiz-option:hover{transform:none;} }
-  .quiz-option-icon{width:40px;height:40px;color:var(--sage-dark);transition:color 300ms ease-out;}
-  .quiz-option-sub{display:block;font-size:.72rem;font-weight:400;color:#5f6b60;transition:color 300ms ease-out;}
+  .quiz-option:hover{background:#e8e8e8;}
+  @media (prefers-reduced-motion:reduce){ .quiz-option{transition:none;} }
+  .quiz-option-icon{width:40px;height:40px;color:var(--sage-dark);transition:color 300ms ease;}
+  .quiz-option-sub{display:block;font-size:.72rem;font-weight:400;color:#5f6b60;transition:color 300ms ease;}
   .quiz-option-check{
     position:absolute;top:6px;right:6px;width:18px;height:18px;border-radius:50%;
     background:#fff;color:var(--sage-dark);display:grid;place-items:center;
@@ -312,7 +355,12 @@
     transition:opacity 200ms ease-out,transform 200ms ease-out;
   }
   .quiz-option-check svg{width:11px;height:11px;}
+  /* selected fill stays --sage-dark, not the brief's literal #7a9b7f — white text
+     on #7a9b7f measures ~3.1:1, below the 4.5:1 AA floor at this text size/weight;
+     same accessible substitution made everywhere else sage-on-white shows up in
+     this card. */
   .quiz-option.is-selected{background:var(--sage-dark);border-color:#42574a;color:#fff;}
+  .quiz-option.is-selected:hover{background:var(--sage-dark);}
   .quiz-option.is-selected .quiz-option-icon{color:#fff;}
   .quiz-option.is-selected .quiz-option-sub{color:rgba(255,255,255,.85);}
   .quiz-option.is-selected .quiz-option-check{opacity:1;transform:scale(1);}
@@ -342,15 +390,15 @@
   }
 
   /* ---------- generic section ---------- */
-  .section{padding-block:clamp(3.5rem,8vw,6rem);}
+  .section{padding-block:clamp(3rem,8vw,5rem);}   /* 80px at rest */
   .section--tint{background:var(--tint);}
   .section-head{max-width:640px;margin:0 auto clamp(2rem,5vw,3.25rem);text-align:center;}
   .eyebrow{
     font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;
     color:var(--sage);margin-bottom:.6rem;
   }
-  .section-head h2{font-size:clamp(1.9rem,4.2vw,2.75rem);}
-  .section-sub{margin-top:.9rem;color:var(--muted);font-size:clamp(1rem,1.5vw,1.08rem);}
+  .section-head h2{font-size:clamp(2rem,4vw,2.5rem);letter-spacing:.5px;}   /* 32-40px */
+  .section-sub{margin-top:.9rem;color:var(--muted);font-size:clamp(1.125rem,1.6vw,1.25rem);line-height:1.6;}   /* 18-20px */
 
   /* ---------- video section (placeholder) ----------
      Swap-ready: to go live, replace the .video-placeholder <div> with a
@@ -365,6 +413,7 @@
     background:var(--tint);
     border:1px solid var(--line);
     border-radius:var(--radius);
+    box-shadow:var(--shadow-md);
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.85rem;
     color:var(--muted);text-align:center;
   }
@@ -387,36 +436,102 @@
   @media (min-width:640px){ .cards-3{grid-template-columns:repeat(2,1fr);} }
   @media (min-width:1024px){ .cards-3{grid-template-columns:repeat(3,1fr);} }
 
+  /* Photo background + dark overlay. The overlay is a separate ::before layer
+     (not baked into one linear-gradient()+url() background-image, as a literal
+     copy of the brief's snippet would do) specifically so it can transition
+     smoothly on hover — background-image itself can't animate between two
+     gradient values, it just hard-swaps. */
   .service-card{
-    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    padding:clamp(1.5rem,3vw,2rem);box-shadow:var(--shadow-sm);
-    transition:transform .3s var(--ease),box-shadow .3s;
+    position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    min-height:320px;
+    background-color:#fff;background-size:cover;background-position:center;background-repeat:no-repeat;
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:max(24px, clamp(1.5rem,3vw,2rem));box-shadow:var(--shadow-md);
+    transition:transform 300ms ease-out,box-shadow 300ms ease-out;
   }
-  .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
-  @media (prefers-reduced-motion:reduce){ .service-card:hover{transform:none;} }
+  .service-card::before{
+    content:"";position:absolute;inset:0;
+    background:rgba(0,0,0,.65);                /* Oasis-style — dark enough that text is the clear focus */
+    transition:background-color 300ms ease-out;
+  }
+  .service-card:hover::before{background:rgba(0,0,0,.75);}   /* overlay deepens on hover, alongside the lift below */
+  .service-card--design{background-image:url('landscapedesign.png');}
+  .service-card--hardscape{background-image:url('hardscaping.png');}
+  .service-card--maintenance{background-image:url('maintenance.png');}
   .service-icon{
+    position:relative;z-index:1;
     width:56px;height:56px;display:grid;place-items:center;
     background:var(--tint);color:var(--sage-dark);border-radius:14px;margin-bottom:1rem;
   }
   .service-icon svg{width:28px;height:28px;}
-  .service-card h3{font-size:1.2rem;margin-bottom:.5rem;}
-  .service-card p{color:var(--muted);}
+  .service-card h3{
+    position:relative;z-index:1;
+    font-size:24px;font-weight:700;margin-bottom:.5rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5);
+  }
+  .service-card p{
+    position:relative;z-index:1;
+    font-size:15px;font-weight:400;line-height:1.6;color:#fff;opacity:.95;
+    text-shadow:0 1px 4px rgba(0,0,0,.4);
+  }
 
-  /* ---------- portfolio ---------- */
+  /* ---------- portfolio ----------
+     Desktop (1024px+): 2-col grid. Tablet (768-1023px): the same grid falls
+     back to its default single column — no carousel needed, one card already
+     fills the row. Mobile (<768px): .portfolio-grid is repurposed in place as
+     the sliding flex track (rather than duplicating the 4 cards into a second,
+     carousel-only DOM) — arrows/dots are new siblings, hidden above 767px. */
+  .portfolio-carousel{position:relative;}
   .portfolio-grid{display:grid;grid-template-columns:1fr;gap:clamp(1rem,3vw,1.5rem);}
-  @media (min-width:720px){ .portfolio-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (min-width:1024px){ .portfolio-grid{grid-template-columns:repeat(2,1fr);} }
+
+  .carousel-arrow,.carousel-dots{display:none;}   /* carousel-only controls — shown again below 768px */
+
+  @media (max-width:767px){
+    .portfolio-carousel{overflow:hidden;}
+    .portfolio-grid{display:flex;flex-wrap:nowrap;gap:0;transition:transform 500ms ease-out;}
+    .portfolio-grid .project{flex:0 0 100%;width:100%;}
+
+    .carousel-arrow{
+      display:flex;align-items:center;justify-content:center;
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:40px;height:40px;border-radius:50%;
+      background:rgba(255,255,255,.9);color:var(--text);border:0;cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,.18);opacity:.9;
+      transition:transform 200ms ease-out,opacity 200ms ease-out,box-shadow 200ms ease-out;
+      z-index:2;
+    }
+    .carousel-arrow:hover{transform:translateY(-50%) scale(1.1);opacity:1;box-shadow:0 6px 16px rgba(0,0,0,.24);}
+    .carousel-arrow:active{transform:translateY(-50%) scale(.95);}
+    .carousel-arrow--prev{left:10px;}
+    .carousel-arrow--next{right:10px;}
+    .carousel-arrow svg{width:20px;height:20px;}
+
+    .carousel-dots{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:16px;}
+    .carousel-dots .dot{
+      width:8px;height:8px;padding:0;border:0;border-radius:50%;
+      background:#ccc;cursor:pointer;
+      transition:background-color 200ms ease-out,transform 200ms ease-out;
+    }
+    .carousel-dots .dot.is-active{background:var(--sage);transform:scale(1.25);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .portfolio-grid{transition:none;}
+    .carousel-arrow{transition:none;}
+    .carousel-arrow:hover,.carousel-arrow:active{transform:translateY(-50%);}
+    .carousel-dots .dot{transition:none;}
+  }
+
   .project{
     position:relative;display:block;overflow:hidden;
-    border-radius:var(--radius);box-shadow:var(--shadow-sm);
+    border-radius:var(--radius);box-shadow:var(--shadow-md);
+    transition:box-shadow 300ms ease-out;
     aspect-ratio:4/3;
   }
   .project-media{
     position:absolute;inset:0;
     background-size:cover;background-position:center;
-    transition:transform .5s var(--ease);
   }
-  .project:hover .project-media{transform:scale(1.05);}
-  @media (prefers-reduced-motion:reduce){ .project:hover .project-media{transform:none;} }
   .project--a .project-media{background-color:#6f9573;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='xMidYMid slice'%3E%3Crect width='400' height='300' fill='%2386a98a'/%3E%3Ccircle cx='330' cy='58' r='30' fill='%23f4ead0' opacity='.75'/%3E%3Cpath d='M0 120h400v42H0z' fill='%23759777'/%3E%3Cpath d='M0 186h400v54H0z' fill='%2361805f'/%3E%3Cpath d='M0 248h400v60H0z' fill='%234f6a50'/%3E%3C/svg%3E");}
   .project--b .project-media{background-color:#a99271;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='xMidYMid slice'%3E%3Crect width='400' height='300' fill='%23bcac8b'/%3E%3Crect width='400' height='70' fill='%237fa383'/%3E%3Cg stroke='%238d7d5f' stroke-width='3' fill='none'%3E%3Cpath d='M0 110h400M0 160h400M0 210h400M0 260h400M60 80v220M150 80v220M250 80v220M340 80v220'/%3E%3C/g%3E%3C/svg%3E");}
   .project--c .project-media{background-color:#7fa383;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300' preserveAspectRatio='xMidYMid slice'%3E%3Crect width='400' height='300' fill='%23aecdaa'/%3E%3Crect y='140' width='400' height='160' fill='%238bb18d'/%3E%3Crect y='220' width='400' height='80' fill='%23c9b48f'/%3E%3Cg fill='%235e7d5c'%3E%3Ccircle cx='80' cy='150' r='26'/%3E%3Ccircle cx='150' cy='158' r='20'/%3E%3Ccircle cx='300' cy='150' r='30'/%3E%3C/g%3E%3C/svg%3E");}
@@ -424,21 +539,22 @@
   .project-overlay{
     position:absolute;inset:0;
     display:flex;flex-direction:column;justify-content:flex-end;gap:4px;
-    padding:clamp(1rem,3vw,1.4rem);color:#fff;
+    padding:max(24px, clamp(1rem,3vw,1.4rem));color:#fff;
     background:linear-gradient(to top,rgba(20,28,22,.85) 0%,rgba(20,28,22,.2) 52%,transparent 100%);
   }
   .project-name{font-weight:700;font-size:1.12rem;}
   .project-cta{
     font-size:.82rem;font-weight:600;letter-spacing:.04em;
-    opacity:.85;transform:translateY(3px);
-    transition:opacity .3s var(--ease),transform .3s var(--ease);
+    opacity:.85;
+    transition:opacity 300ms ease-out;
   }
-  .project:hover .project-cta,.project:focus-visible .project-cta{opacity:1;transform:translateY(0);}
+  .project:hover .project-cta,.project:focus-visible .project-cta{opacity:1;}
 
   /* ---------- testimonials ---------- */
   .quote-card{
     margin:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-    padding:clamp(1.5rem,3vw,2rem);box-shadow:var(--shadow-sm);
+    padding:max(24px, clamp(1.5rem,3vw,2rem));box-shadow:var(--shadow-md);
+    transition:box-shadow 300ms ease-out;
     display:flex;flex-direction:column;gap:.9rem;
   }
   .stars{color:#e0a83b;letter-spacing:3px;font-size:1rem;}
@@ -475,17 +591,17 @@
   @media (prefers-reduced-motion:reduce){ .faq-a,.faq-chevron{transition:none;} }
 
   /* ---------- footer ---------- */
-  .site-footer{background:var(--sage-dark);color:rgba(255,255,255,.85);}
+  .site-footer{background:var(--text);color:rgba(255,255,255,.85);}   /* #2c2c2c charcoal, not sage */
   .footer-grid{
     display:grid;grid-template-columns:1fr;gap:clamp(1.75rem,4vw,2.5rem);
-    padding:clamp(3rem,7vw,4.5rem) 0 clamp(1.5rem,4vw,2rem);
+    padding:clamp(2.5rem,6vw,3.75rem) 0 clamp(1.5rem,4vw,2rem);   /* 60px at rest */
   }
-  @media (min-width:720px){ .footer-grid{grid-template-columns:1.6fr 1fr 1.2fr .9fr;} }
+  @media (min-width:1024px){ .footer-grid{grid-template-columns:1.6fr 1fr 1.2fr .9fr;} }   /* below this, footer stays the clean stacked mobile layout — no cramped 4-col squeeze in the 768-1023 tablet range */
   .footer-brand .logo{color:#fff;margin-bottom:.75rem;}
   .footer-brand p{max-width:34ch;font-size:.92rem;}
   .footer-col h4{color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem;}
   .footer-col ul{display:flex;flex-direction:column;gap:.6rem;font-size:.92rem;}
-  .footer-col a:hover{color:#fff;text-decoration:underline;}
+  .footer-col a:hover{color:var(--sage);text-decoration:underline;}
   .social{display:flex;gap:12px;}
   .social a{
     width:38px;height:38px;display:grid;place-items:center;
@@ -498,6 +614,22 @@
     display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
     padding:1.25rem 0 2rem;border-top:1px solid rgba(255,255,255,.16);
     font-size:.82rem;color:rgba(255,255,255,.6);
+  }
+
+  /* ---- footer mobile (375-767px): stacked, tighter, left-aligned, clearer hierarchy ---- */
+  @media (max-width:767px){
+    .site-footer .container{padding-inline:20px;}   /* tighter than the site-wide clamp, just for the footer */
+    .footer-grid{padding:40px 0 24px;gap:24px;}
+    .footer-brand{margin-bottom:0;}                 /* the grid's 24px gap already separates every section */
+    .footer-brand .logo{font-size:16px;}
+    .footer-brand .logo-mark{width:32px;height:32px;}
+    .footer-brand .logo-mark svg{width:18px;height:18px;}
+    .footer-brand p{font-size:13px;color:rgba(255,255,255,.6);}
+    .footer-col h4{font-size:12px;color:#999;}
+    .footer-col ul{font-size:14px;}
+    .footer-address{font-size:13px;line-height:1.5;}
+    .social a{width:36px;height:36px;}
+    .social svg{width:24px;height:24px;}
   }
 
   .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
@@ -598,13 +730,13 @@
   .nav-list li:nth-child(5){animation-delay:.44s;}
   @media (max-width:880px){ .nav-list li{animation:none;} }
 
-  /* ---- scroll reveals (JS toggles .pre-reveal / .in): fade + slide, no softness ---- */
-  .section-head{transition:opacity .4s ease-in-out,transform .4s ease-in-out;}
-  #services .service-card{transition:opacity .4s ease-in-out,transform .25s ease-in-out,box-shadow .25s ease-in-out,background .25s ease-in-out,border-color .25s ease-in-out;}
-  #portfolio .project{transition:opacity .4s ease-in-out,transform .25s ease-in-out,box-shadow .25s ease-in-out;}
-  #testimonials .quote-card{transition:opacity .4s ease-in-out,transform .25s ease-in-out,box-shadow .25s ease-in-out;}
-  #faq .faq-item{transition:opacity .4s ease-in-out,transform .3s ease-in-out,border-color .2s ease-in-out;}
-  .video-placeholder{transition:opacity .4s ease-in-out,transform .3s ease-in-out,box-shadow .25s ease-in-out,border-color .25s ease-in-out;}
+  /* ---- scroll reveals (JS toggles .pre-reveal / .in): fade + slide, 300ms ease-out ---- */
+  .section-head{transition:opacity 300ms ease-out,transform 300ms ease-out;}
+  #services .service-card{transition:opacity 300ms ease-out,transform 300ms ease-out,box-shadow 300ms ease-out,background 300ms ease-out,border-color 300ms ease-out;}
+  #portfolio .project{transition:opacity 300ms ease-out,transform 300ms ease-out,box-shadow 300ms ease-out;}
+  #testimonials .quote-card{transition:opacity 300ms ease-out,transform 300ms ease-out,box-shadow 300ms ease-out;}
+  #faq .faq-item{transition:opacity 300ms ease-out,transform 300ms ease-out,border-color 300ms ease-out;}
+  .video-placeholder{transition:opacity 300ms ease-out,transform 300ms ease-out,box-shadow 300ms ease-out,border-color 300ms ease-out;}
   .pre-reveal{opacity:0;transform:translateY(20px);}
 
   /* rating stars: shown, no decorative stagger */
@@ -622,39 +754,47 @@
   .badges li svg{transition:transform .25s ease-in-out;}
   .badges li:hover svg{transform:scale(1.1);}
 
-  /* ---- service cards hover: simple lift + shadow darkens ---- */
-  #services .service-card:hover{transform:translateY(-8px);background:#fbfcfb;border-color:rgba(122,155,127,.5);box-shadow:0 30px 50px -18px rgba(44,44,44,.42);}
-  .service-icon{transition:transform .25s ease-in-out,color .25s ease-in-out,background .25s ease-in-out;}
-  .service-card:hover .service-icon{transform:scale(1.15);color:var(--sage-dark);background:#e3ebe4;}
+  /* ---- service cards hover: lifts + shadow expands + overlay darkens (see ::before above) ----
+     background/border-color: removed `background` from this hover rule — the card now
+     carries a background-image (the photo), and the `background:#fbfcfb` shorthand this
+     used to set would reset background-image to none, hiding the photo on every hover.
+     transform: this is the one card type on the page that DOES lift on hover — every
+     other card (portfolio/testimonials) stays shadow-only by earlier, still-standing
+     request; this is a newer, more specific instruction just for these three cards. */
+  #services .service-card:hover{
+    border-color:rgba(122,155,127,.5);
+    transform:translateY(-8px);
+    box-shadow:0 12px 32px rgba(0,0,0,.2);
+  }
+  .service-icon{transition:color 300ms ease-out,background 300ms ease-out;}
+  .service-card:hover .service-icon{color:var(--sage-dark);background:#e3ebe4;}
 
-  /* ---- portfolio hover ---- */
-  .project-overlay{transition:background .25s ease-in-out;}
+  /* ---- portfolio hover: overlay darkens + shadow expands, no zoom/lift ---- */
+  .project-overlay{transition:background 300ms ease-out;}
   .project:hover .project-overlay{background:linear-gradient(to top,rgba(20,28,22,.92) 0%,rgba(20,28,22,.35) 55%,rgba(20,28,22,.08) 100%);}
-  .project:hover{box-shadow:0 26px 44px -16px rgba(44,44,44,.45);}
-  .project-name{transition:transform .25s ease-in-out;}
-  .project:hover .project-name{transform:translateY(-3px);}
+  .project:hover{box-shadow:var(--shadow-lg);}
 
-  /* ---- testimonials hover ---- */
-  #testimonials .quote-card:hover{transform:translateY(-6px);box-shadow:0 24px 40px -18px rgba(44,44,44,.38);}
-  .quote-card blockquote{transition:color .25s ease-in-out;}
+  /* ---- testimonials hover: shadow only ---- */
+  #testimonials .quote-card:hover{box-shadow:var(--shadow-lg);}
+  .quote-card blockquote{transition:color 300ms ease-out;}
   #testimonials .quote-card:hover blockquote{color:var(--sage-dark);}
 
   /* ---- faq question hover ---- */
-  .faq-q{transition:color .2s ease-in-out,background .2s ease-in-out;}
+  .faq-q{transition:color 300ms ease-out,background 300ms ease-out;}
   .faq-q:hover{background:var(--tint);}
 
-  /* ---- video placeholder hover: solid shadow, no glow ring ---- */
-  .video-placeholder:hover{border-color:var(--sage-dark);box-shadow:0 24px 40px -18px rgba(44,44,44,.4);}
-  .video-placeholder .play{transition:transform .25s ease-in-out,box-shadow .25s ease-in-out;}
-  .video-placeholder:hover .play{transform:scale(1.15);box-shadow:0 14px 28px -8px rgba(44,44,44,.5);}
+  /* ---- video placeholder hover: shadow expands, no glow ring ---- */
+  .video-placeholder:hover{border-color:var(--sage-dark);box-shadow:var(--shadow-lg);}
+  .video-placeholder .play{transition:box-shadow 300ms ease-out;}
+  .video-placeholder:hover .play{box-shadow:0 8px 24px -6px rgba(44,44,44,.4);}
 
-  /* ---- footer links + social hover ---- */
-  .footer-col a{position:relative;transition:color .25s ease-in-out;}
-  .footer-col a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:currentColor;transition:right .25s ease-in-out;}
-  .footer-col a:hover{text-decoration:none;color:#fff;}
+  /* ---- footer links + social hover: sage accent, color only ---- */
+  .footer-col a{position:relative;transition:color 300ms ease-out;}
+  .footer-col a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:currentColor;transition:right 300ms ease-out;}
+  .footer-col a:hover{text-decoration:none;color:var(--sage);}
   .footer-col a:hover::after{right:0;}
-  .social a{transition:background .2s ease-in-out,border-color .2s ease-in-out,transform .25s ease-in-out,color .2s ease-in-out;}
-  .social a:hover{transform:translateY(-3px) scale(1.15);color:#fff;}
+  .social a{transition:background 300ms ease-out,border-color 300ms ease-out,color 300ms ease-out;}
+  .social a:hover{color:var(--sage);}
 
   /* quiz error messages: colors/timing/spacing now set at .quiz-err's primary
      definition (SiteSync-copy pass) — a simple opacity fade, no slide. */
@@ -677,14 +817,59 @@
     .site-header,.hero-copy h1,.hero-sub,.badges li,.hero-form,.nav-list li,
     .badges li svg{ animation:none!important; opacity:1!important; transform:none!important; }
     .pre-reveal{ opacity:1!important; transform:none!important; }
-    .section-head,.video-placeholder,#services .service-card,#portfolio .project,
-    #testimonials .quote-card,#faq .faq-item,.quiz-err{ transition:none!important; }
+    .section-head,.video-placeholder,#services .service-card,#services .service-card::before,
+    #portfolio .project,#testimonials .quote-card,#faq .faq-item,.quiz-err{ transition:none!important; }
     .quiz-err:empty{ opacity:0; }
     .logo:hover,.badges li:hover,.badges li:hover svg,#services .service-card:hover,
     .service-card:hover .service-icon,.project:hover .project-name,#testimonials .quote-card:hover,
     .social a:hover,
     .video-placeholder:hover .play,.btn:active,.quiz-back:active,.carousel-arrow:active{ transform:none!important; }
     .hero-bg{ animation:none!important; }
+  }
+
+  /* =====================================================================
+     MOBILE OPTIMIZATION (375-480px) — sized/spaced for small phones. Placed
+     last so it wins any same-specificity ties with the rules above.
+     .btn-book (header) and .quiz-option/.hero-form .btn (already have their
+     own more-specific mobile rules elsewhere) are deliberately left out of
+     the generic touch-target bump below — .btn-book in particular has been
+     tuned across several earlier passes to fit one header row on a 375px
+     screen, and forcing it to 44px here would undo that. */
+  @media (max-width:480px){
+    html,body{overflow-x:hidden;}   /* no horizontal scroll */
+    body{font-size:15px;}
+
+    /* ---- hero ---- */
+    .hero-inner{padding-top:91px;padding-bottom:111px;}   /* +15% overall hero height (measured ~683px at 375px wide) */
+    .hero-copy h1{font-size:clamp(1.8rem,5vw,2.5rem);}
+    .hero-sub{font-size:clamp(.95rem,2.5vw,1.1rem);}
+    .badges li{font-size:clamp(.75rem,2vw,.9rem);}
+
+    /* ---- section rhythm + section headings ---- */
+    .section{padding-block:40px;}
+    .section-head h2{font-size:24px;}
+    .section-sub{font-size:16px;}
+
+    /* ---- booking form card ---- */
+    .hero-form{
+      margin-top:20px;                         /* breathing room under the badges, not flush */
+      padding:24px;
+      background:rgba(255,255,255,.85);        /* more opaque — easier to read on a small screen */
+    }
+    .hero-form h2{font-size:18px;margin:0 0 20px;}
+    .quiz-progress{height:4px;}
+    .quiz-steplabel{font-size:12px;}
+    .hero-form input,.hero-form select{
+      font-size:16px;                          /* 16px minimum — smaller triggers Safari's auto-zoom */
+      padding:12px;
+    }
+    .quiz-err:not(:empty){margin-bottom:16px;}
+    .quiz-option{min-height:48px;padding:12px;font-size:14px;}
+    .hero-form .btn{min-height:48px;padding:14px 0;font-size:15px;}
+    .quiz-back{min-height:44px;display:inline-flex;align-items:center;}  /* larger tap area, same look */
+
+    /* ---- chat panel close button: real 44px touch target ---- */
+    .chat-panel-close{width:44px;height:44px;}
   }
 </style>
 </head>
@@ -843,9 +1028,24 @@
 
             <section class="quiz-step" data-step="4" hidden>
               <p class="quiz-q" id="q-date-label">When would you like to start?</p>
-              <div class="quiz-field">
-                <label class="quiz-label" for="q-date">Preferred start date</label>
-                <input type="date" id="q-date" name="date" aria-labelledby="q-date-label" aria-describedby="err-date">
+              <input type="hidden" id="q-date" name="date" value="">
+              <div class="quiz-options quiz-options--timeline" role="radiogroup" aria-labelledby="q-date-label" aria-describedby="err-date" data-input="q-date">
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Tomorrow">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <span class="quiz-option-label">Tomorrow</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="This week">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <span class="quiz-option-label">This week</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="This month">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <span class="quiz-option-label">This month</span>
+                </button>
+                <button type="button" class="quiz-option" role="radio" aria-checked="false" data-value="Just looking for a quote">
+                  <span class="quiz-option-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span>
+                  <span class="quiz-option-label">Just looking for a quote</span>
+                </button>
               </div>
               <p class="quiz-err" id="err-date" aria-live="polite"></p>
             </section>
@@ -892,21 +1092,21 @@
         <p class="section-sub">From the first sketch to seasonal upkeep &mdash; one team for the whole yard.</p>
       </div>
       <div class="cards-3">
-        <article class="service-card">
+        <article class="service-card service-card--design">
           <span class="service-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M10 21v-5h4v5"/><path d="M9 10h.01M15 10h.01"/></svg>
           </span>
           <h3>Landscape Design</h3>
           <p>Custom plans built around your site, your style, and how you actually use the yard &mdash; planting, grading, lighting, and layout, with clear drawings before we break ground.</p>
         </article>
-        <article class="service-card">
+        <article class="service-card service-card--hardscape">
           <span class="service-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="8" height="6" rx="1"/><rect x="13" y="4" width="8" height="6" rx="1"/><rect x="3" y="14" width="8" height="6" rx="1"/><rect x="13" y="14" width="8" height="6" rx="1"/></svg>
           </span>
           <h3>Hardscaping</h3>
           <p>Patios, walkways, retaining walls, fire pits, and seating built from quality stone and pavers &mdash; engineered to hold up through freeze, thaw, and years of heavy use.</p>
         </article>
-        <article class="service-card">
+        <article class="service-card service-card--maintenance">
           <span class="service-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-3 2-5 5-5 0 3-2 5-5 5Z"/><path d="M12 14c0-3-2-5-5-5 0 3 2 5 5 5Z"/><path d="M5 22h14"/></svg>
           </span>
@@ -925,35 +1125,52 @@
         <h2>Recent Projects</h2>
         <p class="section-sub">A few spaces we&rsquo;ve designed, built, and now help maintain.</p>
       </div>
-      <div class="portfolio-grid">
-        <article class="project project--a">
-          <div class="project-media" aria-hidden="true"></div>
-          <div class="project-overlay">
-            <span class="project-name">Hillside Terrace Garden</span>
-            <span class="project-cta">View Project &rarr;</span>
-          </div>
-        </article>
-        <article class="project project--b">
-          <div class="project-media" aria-hidden="true"></div>
-          <div class="project-overlay">
-            <span class="project-name">Modern Paver Patio</span>
-            <span class="project-cta">View Project &rarr;</span>
-          </div>
-        </article>
-        <article class="project project--c">
-          <div class="project-media" aria-hidden="true"></div>
-          <div class="project-overlay">
-            <span class="project-name">Front Yard Renewal</span>
-            <span class="project-cta">View Project &rarr;</span>
-          </div>
-        </article>
-        <article class="project project--d">
-          <div class="project-media" aria-hidden="true"></div>
-          <div class="project-overlay">
-            <span class="project-name">Backyard Retreat</span>
-            <span class="project-cta">View Project &rarr;</span>
-          </div>
-        </article>
+      <!-- .portfolio-grid is the CSS grid on tablet/desktop AND the sliding
+           carousel track on mobile (<768px) — same 4 cards, no duplication.
+           Arrows/dots are only visible in that mobile range. -->
+      <div class="portfolio-carousel">
+        <div class="portfolio-grid" id="portfolioTrack">
+          <article class="project project--a">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-overlay">
+              <span class="project-name">Hillside Terrace Garden</span>
+              <span class="project-cta">View Project &rarr;</span>
+            </div>
+          </article>
+          <article class="project project--b">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-overlay">
+              <span class="project-name">Modern Paver Patio</span>
+              <span class="project-cta">View Project &rarr;</span>
+            </div>
+          </article>
+          <article class="project project--c">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-overlay">
+              <span class="project-name">Front Yard Renewal</span>
+              <span class="project-cta">View Project &rarr;</span>
+            </div>
+          </article>
+          <article class="project project--d">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-overlay">
+              <span class="project-name">Backyard Retreat</span>
+              <span class="project-cta">View Project &rarr;</span>
+            </div>
+          </article>
+        </div>
+        <button type="button" class="carousel-arrow carousel-arrow--prev" id="portfolioPrev" aria-label="Previous project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="carousel-arrow carousel-arrow--next" id="portfolioNext" aria-label="Next project">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <div class="carousel-dots" id="portfolioDots" aria-label="Project slides">
+          <button type="button" class="dot is-active" aria-label="Go to slide 1" aria-current="true"></button>
+          <button type="button" class="dot" aria-label="Go to slide 2"></button>
+          <button type="button" class="dot" aria-label="Go to slide 3"></button>
+          <button type="button" class="dot" aria-label="Go to slide 4"></button>
+        </div>
       </div>
     </div>
   </section>
@@ -1072,7 +1289,7 @@
       <ul>
         <li><a href="tel:+15551234567">(555) 123-4567</a></li>
         <li><a href="mailto:hello@landscapingco.example">hello@landscapingco.example</a></li>
-        <li>1420 Greenway Blvd, Suite 3<br>Springfield, ST 00000</li>
+        <li class="footer-address">1420 Greenway Blvd, Suite 3<br>Springfield, ST 00000</li>
       </ul>
     </div>
 
@@ -1179,7 +1396,7 @@
     var finished = false;
 
     /* JS baseline: quiz lives in the DOM but stays collapsed + inert until
-       "Get Started" expands it (700ms unfold). No-JS users keep the [hidden]. */
+       "Get Started" expands it (500ms spring pop). No-JS users keep the [hidden]. */
     quiz.removeAttribute('hidden');
     quiz.inert = true;
     function isOpen(){ return quiz.classList.contains('is-open'); }
@@ -1229,8 +1446,10 @@
       });
     });
 
-    /* which visible input (if any) a given error paragraph reddens the border of */
-    var ERR_FIELD = { 'err-name':'q-name', 'err-phone':'q-phone', 'err-date':'q-date' };
+    /* which visible input (if any) a given error paragraph reddens the border of —
+       err-type/err-scope/err-date all belong to button groups now, not a field with
+       its own border to redden */
+    var ERR_FIELD = { 'err-name':'q-name', 'err-phone':'q-phone' };
     function setErr(id, msg){
       var el = document.getElementById(id);
       if (!el) return;
@@ -1267,7 +1486,7 @@
       } else if (n === 3){
         setErr('err-scope', scopeVal() === '' ? 'Please select a project scope.' : '');
       } else if (n === 4){
-        setErr('err-date',  dateEl.value === '' ? 'Please choose a preferred start date.' : '');
+        setErr('err-date',  dateEl.value === '' ? 'Please select a timeline.' : '');
       }
     }
 
@@ -1342,10 +1561,10 @@
       backBtn.hidden = true;
       syncNext();
       void quiz.offsetWidth;                    /* commit collapsed state before transitioning */
-      quiz.classList.add('is-open');            /* 700ms unfold */
+      quiz.classList.add('is-open');            /* 500ms spring pop */
       requestAnimationFrame(setBodyHeight);     /* measure step now that the panel has layout */
       var f = steps[0].querySelector('input');
-      var delay = reduceMotion ? 0 : 700;
+      var delay = reduceMotion ? 0 : 500;
       setTimeout(function(){
         quiz.classList.add('is-expanded');     /* lift the max-height cap so later steps can grow freely */
         setBodyHeight();
@@ -1534,6 +1753,56 @@
       if (t.delay) t.el.style.transitionDelay = t.delay + 'ms';
       io.observe(t.el);
     });
+  })();
+
+  /* portfolio mobile carousel (<768px) — .portfolio-grid doubles as the CSS
+     grid (tablet/desktop) and the sliding track (mobile); this only ever
+     toggles a translateX on it and drives the arrows/dots. */
+  (function initPortfolioCarousel(){
+    var track   = document.getElementById('portfolioTrack');
+    var prevBtn = document.getElementById('portfolioPrev');
+    var nextBtn = document.getElementById('portfolioNext');
+    var dotsWrap= document.getElementById('portfolioDots');
+    if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.project'));
+    var dots   = Array.prototype.slice.call(dotsWrap.querySelectorAll('.dot'));
+    if (!slides.length) return;
+    var mq = window.matchMedia('(max-width:767px)');
+    var index = 0;
+
+    /* the scroll-reveal IntersectionObserver above only fires for elements
+       that actually intersect the viewport — slides 2-4 sit laid out off to
+       the right (clipped by .portfolio-carousel{overflow:hidden}) and would
+       otherwise stay stuck at opacity:0 forever if the visitor never scrolls
+       past them vertically. Skip the entrance fade for the carousel entirely
+       so every slide is simply visible as soon as it's reachable. */
+    function ensureSlidesVisible(){
+      if (!mq.matches) return;
+      slides.forEach(function(s){ s.classList.remove('pre-reveal'); s.classList.add('in'); s.style.transitionDelay = ''; });
+    }
+
+    function render(){
+      if (!mq.matches){ track.style.transform = ''; return; }
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach(function(d, i){
+        var on = (i === index);
+        d.classList.toggle('is-active', on);
+        d.setAttribute('aria-current', on ? 'true' : 'false');
+      });
+    }
+
+    function goTo(n){
+      index = (n + slides.length) % slides.length;   /* loops both directions */
+      render();
+    }
+
+    prevBtn.addEventListener('click', function(){ goTo(index - 1); });
+    nextBtn.addEventListener('click', function(){ goTo(index + 1); });
+    dots.forEach(function(d, i){ d.addEventListener('click', function(){ goTo(i); }); });
+
+    ensureSlidesVisible();
+    render();
+    window.addEventListener('resize', function(){ ensureSlidesVisible(); render(); }, { passive: true });
   })();
 })();
 </script>
